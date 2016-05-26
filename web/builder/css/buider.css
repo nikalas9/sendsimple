@@ -1,0 +1,307 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*--------------------------------------- ckeditor*/
+
+/*.cke_button__tblabel{
+    cursor: default;
+    display: inline;
+    float: left;
+    margin-right: 3px;
+    padding: 4px 4px 0;
+}
+.cke_button__tblabel_icon{
+    display:none !important;
+}
+.cke_button__tblabel_label{
+    display: inline !important;
+}*/
+
+.cke_button__button_general_icon{
+    display:none !important;
+}
+.cke_button__button_general_label{
+    display: inline !important;
+}
+.cke_button__button_contact_icon{
+    display:none !important;
+}
+.cke_button__button_contact_label{
+    display: inline !important;
+}
+.cke_button__button_action_icon{
+    display:none !important;
+}
+.cke_button__button_action_label{
+    display: inline !important;
+}
+.cke_button__button_if_icon{
+    display:none !important;
+}
+.cke_button__button_if_label{
+    display: inline !important;
+}
+
+/*.cke_button__templates_label{
+	display: inline !important;
+}
+.cke_button__m-firstname_label{
+    display: inline !important;
+}
+.cke_button__m-firstname_icon{
+    display:none !important;
+}
+.cke_button__m-email_label{
+    display: inline !important;
+}
+.cke_button__m-email_icon{
+    display:none !important;
+}
+.cke_button__m-group_label{
+    display: inline !important;
+}
+.cke_button__m-group_icon{
+    display:none !important;
+}
+.cke_button__m-active_label{
+    display: inline !important;
+}
+.cke_button__m-active_icon{
+    display:none !important;
+}*/
+
+/*--------------------------------------- view*/
+
+#nav-panel{
+    position: fixed;
+    top: 0;
+    background: url(../images/image-bg.png);
+    z-index: 1000;
+    width: 100%;
+}
+#nav-panel-body{
+    width: 840px;
+    margin: 0px auto;
+}
+/*#sortable{
+    margin-top:6px;
+}*/
+
+ul.nav-top{
+    background: linear-gradient(#f5f5f5, #cfd1cf);
+    background: -webkit-linear-gradient(#f5f5f5, #cfd1cf); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f5f5f5, #cfd1cf); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f5f5f5, #cfd1cf); /* For Firefox 3.6 to 15 */
+
+    border-bottom: 1px solid #b6b6b6;
+    border-left: 1px solid #b6b6b6;
+    border-right: 1px solid #b6b6b6;
+    box-shadow: 0 1px 0 #fff inset;
+    margin:0px;
+}
+ul.nav-top a{
+    font-size: 16px;
+}
+ul.nav-top .disabled .glyphicon {
+    color: #bbb;
+}
+#changeBackgroundMail{
+    font-size:14px;
+}
+
+#toolbarLocation{
+    margin-top:6px;
+}
+
+#container {
+	width: 644px;
+	margin: 134px auto 40px;
+}
+
+img.image {
+    text-align: center;
+    vertical-align: top;
+}
+img[src="/builder/images/blank.gif"].image {
+    background: url(/builder/images/image-icon-bg.png) no-repeat scroll 50% 50%, url(/builder/images/image-bg.png) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 20px 0 #555 inset;
+    height: 90px;
+}
+/*--------------------------------------- nav*/
+
+.content-block:hover {
+    outline: 2px dashed gray;
+	position: relative;
+	z-index: 100;
+}
+
+.block-active{
+	box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+	outline: 0px none !important;
+	position: relative;
+	z-index: 100;
+}
+
+.row-block{
+	position: relative;
+}
+
+.mystate-highlight{
+	height: 40px;
+	border: 2px dashed gray;
+	background-color: #fff;
+}
+
+
+.glyphicon {
+  color: #444;
+}
+
+.nav-block-top{
+	position: absolute;
+	right:0px;
+	top:-35px;
+	margin: 0px;
+	z-index:1001;
+	background-color: #eee;
+	border-top-left-radius:6px; /*левый нижний угол*/
+	border-top-right-radius:6px; /* правый нижний угол*/
+	box-shadow: 0 -1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.nav-block-bottom{
+	position: absolute;
+	right:0px;
+	bottom:-36px;
+	margin: 0px;
+	z-index:1001;
+	background-color: #eee;
+	border-bottom-left-radius:6px; /*левый нижний угол*/
+	border-bottom-right-radius:6px; /* правый нижний угол*/
+	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.nav > li > a {
+    padding: 8px 10px;
+}
+.nav a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #444;
+  text-decoration: none;
+}
+.nav a:hover,
+.nav a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+.nav a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+
+.modal-backdrop {
+	background-color: transparent;
+}
+
+
+.ui-widget {
+	font-size: 80%;
+}
+
+/* social button*/
+.smileySelector{
+    height: 400px !important;
+    overflow-y: scroll;
+}
+
+/* font icon button*/
+#iconFont {
+    height: 400px;
+    overflow: auto;
+    text-align: center;
+    width: 100%;
+}
+#iconFont div {
+    text-align: center;
+}
+#iconFont a, #iconFont span {
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+#iconFont a {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    /*height: 68px;*/
+    padding: 0.5em;
+    text-align: center;
+    white-space: normal;
+    width: 100px;
+    cursor: pointer !important;
+}
+#iconFont a:hover, #iconFont a.active {
+    background: none repeat scroll 0 0 #eee;
+    border: 1px solid #ddd;
+}
+#iconFont span {
+    color: #000;
+    font-size: 24px;
+}
+
+#avpw_holder{
+    z-index:100000;
+    position:fixed;
+}
+
+
+#update-dialog-modal{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#update-dialog-modal .ui-tabs-panel{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.changeBlock{
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.changeBlock li{
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin: 10px;
+}
+
+.changeBlock li a{
+    display: inline-block;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.18);
+    padding: 10px;
+    text-decoration: none;
+}
+.changeBlock li a span{
+    display: block;
+    padding-top: 6px;
+    font-family: Arial;
+    font-weight: bold;
+    text-align: center;
+    color: 	#484848;
+}
+.changeBlock li.active a,
+.changeBlock li a:hover{
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.changeBlock li a img{
+    max-width: 510px;
+}

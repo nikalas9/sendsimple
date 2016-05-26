@@ -1,0 +1,104 @@
+
+#logo {
+    font-size: 15px;
+}
+#logo i {
+    color: #a90329;
+}
+
+/*------------------------------------------------------------------------------ select2 ------------------------------*/
+.form-group .select2-container,
+.grid-view .filters .select2-container{
+    border: 0px none;
+    padding: 0px;
+}
+
+
+
+
+
+
+
+
+
+/*old*/
+
+#mobile-profile-img{
+    display: block !important;
+}
+
+body > .select2-hidden-accessible{
+    display: none;
+}
+
+/*------------------------------------------------------------------------------- grid -------------------------------*/
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-no-suggestion { padding: 2px 5px;}
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: bold; color: #000; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
+
+/*------------------------------------------------------------------------------- form -------------------------------*/
+
+form div.required label.control-label:after {
+    content:" * ";
+    color:red;
+}
+
+.has-error .ui-spinner {
+    border-color: #b94a48;
+}
+
+.input-color .btn-group i {
+    visibility: hidden;
+}
+.input-color .btn-group .active i {
+    visibility: visible;
+}
+
+/* ------------------------------------------------------------------------------ template ---------------------------*/
+
+#timeline .till {
+    text-align: center;
+}
+
+.diagram-td {
+    cursor: pointer;
+    vertical-align: middle !important;
+}
+
+.diagram-td .main-bar {
+    margin-bottom: 0;
+}
+
+.progress .progress-bar {
+    position: static;
+}
+
+.diagram-td .legend-item {
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ui-spinner-up, .ui-spinner-down{
+    background-color: #fff;
+}
+.ui-spinner-up:hover,
+.ui-spinner-down:hover,
+.ui-spinner-up:focus,
+.ui-spinner-down:focus,
+.ui-spinner-up:active,
+.ui-spinner-down:active
+{
+    background-color: #eee;
+}
+.ui-spinner-up::before, .ui-spinner-down::before{
+    color: #555;
+}

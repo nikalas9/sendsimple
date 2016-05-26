@@ -1,0 +1,315 @@
+#container{
+    background-color: #fff;
+}
+
+.td {
+  border: 0;
+}
+
+.img {
+  border: 0;
+  display: block;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.main-wrapper {
+  padding: 15px;
+  background: #ffffff;
+}
+
+.main-border {
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 0px;
+  border-color: #dddddd;
+}
+
+.first {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  overflow: hidden;
+}
+.last {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  overflow: hidden;
+}
+
+.header {
+  background: #cccccc;
+}
+
+.footer {
+  background: #cccccc;
+}
+
+.es-header {
+  background: #cccccc;
+}
+
+.es-footer {
+  background: #cccccc;
+}
+
+.default {
+  background: #ffffff;
+}
+
+.layout-main-column {
+  background: #ffffff;
+}
+
+.layout-second-column {
+  background: #fff;
+}
+
+/*.sidebar {
+  background: #e3e3e3;
+}*/
+
+.info-region-block {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 12px;
+  color: #777777;
+}
+
+.info-region-block a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 12px;
+  color: #777777;
+  text-decoration: underline;
+}
+
+.default-text {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.default-text a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  /*color: #743A3A;*/
+  text-decoration: underline;
+}
+
+/*.sidebar-text {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.sidebar-text a{
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #743A3A;
+  text-decoration: underline;
+}*/
+
+.header-text {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  color: #686868;
+}
+
+.header-text a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  color: #686868;
+  text-decoration: underline;
+}
+
+.footer-text {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  color: #686868;
+}
+
+.footer-text a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 14px;
+  color: #686868;
+  text-decoration: underline;
+}
+
+.default-title {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 28px;
+  color: #686868;
+  font-weight: normal;
+}
+
+.default-title a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 28px;
+  color: #686868;
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+/*.sidebar-title {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 28px;
+  color: #686868;
+  font-weight: normal;
+}
+
+.sidebar-title a{
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 28px;
+  color: #686868;
+  text-decoration: underline;
+  font-weight: normal;
+}*/
+
+.default-title2 {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 24px;
+  color: #686868;
+  font-weight: normal;
+}
+
+.default-title2 a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 24px;
+  color: #686868;
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+/*.sidebar-title2 {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 24px;
+  color: #686868;
+  font-weight: normal;
+}
+
+.sidebar-title2 a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 24px;
+  color: #686868;
+  text-decoration: underline;
+  font-weight: normal;
+}*/
+
+.default-title3 {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 16px;
+  color: #686868;
+  font-weight: bold;
+}
+
+.default-title3 a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 16px;
+  color: #686868;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/*.sidebar-title3 {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 16px;
+  color: #686868;
+  font-weight: bold;
+}
+
+.sidebar-title3 a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 16px;
+  color: #686868;
+  text-decoration: underline;
+  font-weight: bold;
+}*/
+
+.header-name {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 28px;
+  color: #686868;
+}
+
+.header-name a {
+  font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-size: 28px;
+  color: #686868;
+  text-decoration: underline;
+}
+
+.divHr {
+  border-top:1px #686868 solid;  
+  height:1px;font-size:0px;
+  line-height:0px;
+  margin-bottom:-1px;
+  clear:both;
+}
+
+a{
+
+}
+
+
+/* ----------------------------------- SmileExpo */
+.eventCart{
+    width: 100%;
+    margin-bottom: 22px;
+}
+.eventCart td{
+    padding: 8px 14px;
+    font-size: 14px;
+}
+.eventCart td .event{
+    display: block;
+    font-size: 16px;
+}
+
+.eventCart thead td{
+    background-color: #dadee0;
+    border-bottom: 1px solid #b1b5b9;
+}
+.eventCart tbody .one td{
+    background-color: #f4f6f7;
+}
+.eventCart tbody .two td{
+    background-color: #f9fafb;
+}
+.eventCart tfoot td{
+    background-color: #dadee0;
+    border-top: 1px solid #b1b5b9;
+    border-bottom: 1px solid #b1b5b9;
+}
+
+/* ---------------------------------------------- */
+
+/*.row-news:after {
+    content: "Новостной Блок";
+}
+.row-news {
+    background-color: #555;
+    color: #fff;
+    font-family: Arial;
+    font-size: 20px;
+    height: 40px;
+    margin: 4px 0;
+    padding-top: 14px;
+    text-align: center;
+}*/
+
+.row-news .default-text{
+    padding: 20px 0px;
+    font-size: 20px;
+}
