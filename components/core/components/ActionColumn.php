@@ -10,7 +10,7 @@ class ActionColumn extends \yii\grid\ActionColumn
 
     public $template = '{view} {update} {delete}';
 
-    public $headerOptions = ['width'=>'100px'];
+    public $headerOptions = ['width'=>'110px'];
 
     public $contentOptions = ['style'=>'text-align:center;'];
 

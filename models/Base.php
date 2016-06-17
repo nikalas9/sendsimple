@@ -77,6 +77,9 @@ class Base extends \app\models\base\Base
                 [
                     'class' => \core\components\gridColumns\DateRangeColumn::className(),
                     'attribute'=>'created_at',
+                    'value'=> function($model){
+                        return date("d/m/Y H:i",$model->created_at);
+                    },
                 ],
                 [
                     'class' => \core\components\gridColumns\NameColumn::className(),

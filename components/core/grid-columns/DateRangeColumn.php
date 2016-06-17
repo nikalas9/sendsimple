@@ -8,7 +8,7 @@ class DateRangeColumn extends DataColumn
 
     public $attribute = 'create_at';
 
-    public $contentOptions = ['style'=>'width:120px;'];
+    public $contentOptions = ['style'=>'width:200px;'];
 
     /**
      * Init

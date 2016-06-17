@@ -13,7 +13,7 @@ class Files extends \app\models\base\Files
     public function rules()
     {
         return [
-            [['ord', 'status', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
+            [['status', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
             //[['date_create', 'user_create', 'date_update', 'user_update', 'name', 'date_upload', 'iBook', 'iHeader', 'base_id', 'column'], 'required'],
             //[['column'], 'string'],
             [['name'], 'string', 'max' => 255],

@@ -19,7 +19,7 @@ class ClientsSearch extends Clients
     {
         return [
             [['id', 'status', 'country_id', 'city_id'], 'integer'],
-            [['email', 'other'], 'safe'],
+            [['email', 'other', 'created_at'], 'safe'],
         ];
     }
 
@@ -70,6 +70,12 @@ class ClientsSearch extends Clients
 
         $query->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'other', $this->other]);
+
+        if ($this->created_at != null) {
+            $timeFrom = strtotime(substr($this->created_at, 0, 10).' 00:00:00');
+            $timeTo = strtotime(substr($this->created_at, 13, 10).' 23:59:59');
+            $query->andFilterWhere(['between', Clients::tableName().'.created_at', $timeFrom, $timeTo]);
+        }
 
         return $dataProvider;
     }

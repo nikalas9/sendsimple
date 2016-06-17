@@ -19,7 +19,7 @@ class BaseSearch extends Base
     {
         return [
             [['id', 'sort', 'status', 'lang_id', 'group_id'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'created_at'], 'safe'],
         ];
     }
 
@@ -73,6 +73,12 @@ class BaseSearch extends Base
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+
+        if ($this->created_at != null) {
+            $timeFrom = strtotime(substr($this->created_at, 0, 10).' 00:00:00');
+            $timeTo = strtotime(substr($this->created_at, 13, 10).' 23:59:59');
+            $query->andFilterWhere(['between', Base::tableName().'.created_at', $timeFrom, $timeTo]);
+        }
 
         return $dataProvider;
     }
