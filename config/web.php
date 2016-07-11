@@ -80,7 +80,7 @@ $config = [
                         'yii.gridView.js',
                     ]
                 ],*/
-            ]
+            ],
         ],
         'view' => [
             'theme' => [
@@ -88,6 +88,9 @@ $config = [
                     '@vendor/amnah/yii2-user/views' => '@app/views/user', // example: @app/views/user/default/login.php
                 ],
             ],
+        ],
+        'formatter' => [
+            'datetimeFormat' => 'php:d/m/Y H:i',
         ],
     ],
     'modules' => [

@@ -63,4 +63,20 @@ class Group extends \yii\db\ActiveRecord
             'updated_by' => 'Updated By',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'updated_by']);
+    }
 }

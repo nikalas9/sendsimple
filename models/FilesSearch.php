@@ -18,7 +18,7 @@ class FilesSearch extends Files
     public function rules()
     {
         return [
-            [['id', 'ord', 'status', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
+            [['id', 'status', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
             [['name', 'file', 'column'], 'safe'],
         ];
     }
@@ -47,6 +47,12 @@ class FilesSearch extends Files
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => Yii::$app->request->cookies->getValue('_grid_page_size', 20),
+            ],
+            'sort'=>[
+                'defaultOrder'=>['id'=> SORT_DESC],
+            ],
         ]);
 
         $this->load($params);
@@ -60,7 +66,6 @@ class FilesSearch extends Files
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'ord' => $this->ord,
             'status' => $this->status,
             'iBook' => $this->iBook,
             'iHeader' => $this->iHeader,

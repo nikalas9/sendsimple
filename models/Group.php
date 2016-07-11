@@ -28,6 +28,8 @@ class Group extends \app\models\base\Group
         ];
     }
 
+
+
     // admin option ----------------------------------------------------------------------------------------------------
 
     public static function label($key)
@@ -59,10 +61,7 @@ class Group extends \app\models\base\Group
                 [
                     'class' => \core\components\gridColumns\DateRangeColumn::className(),
                     'attribute'=>'created_at',
-                    'value'=> function($model){
-                        return date("d/m/Y H:i",$model->created_at);
-                    },
-                    //'format'=>'datetime',
+                    'format'=>'datetime',
                 ],
                 [
                     'class' => \core\components\gridColumns\NameColumn::className(),
@@ -105,10 +104,16 @@ class Group extends \app\models\base\Group
                 'name',
                 'site',
                 'color_class',
-                'created_at',
-                'updated_at',
-                'created_by',
-                'updated_by'
+                'created_at:datetime',
+                'updated_at:datetime',
+                [
+                    'label'=>'Created By',
+                    'attribute'=>'createdBy.username',
+                ],
+                [
+                    'label'=>'Updated By',
+                    'attribute'=>'updatedBy.username',
+                ]
             ]
         ];
 

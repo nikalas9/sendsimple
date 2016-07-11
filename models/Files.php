@@ -13,7 +13,7 @@ class Files extends \app\models\base\Files
     public function rules()
     {
         return [
-            [['status', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
             //[['date_create', 'user_create', 'date_update', 'user_update', 'name', 'date_upload', 'iBook', 'iHeader', 'base_id', 'column'], 'required'],
             //[['column'], 'string'],
             [['name'], 'string', 'max' => 255],
@@ -67,13 +67,62 @@ class Files extends \app\models\base\Files
                     'attribute'=>'id',
                 ],
                 [
-                    'class' => \core\components\gridColumns\StatusColumn::className(),
                     'attribute'=>'status',
-                    'toggleUrl'=>Url::to(['toggle-attribute', 'attribute'=>'status', 'id'=>'_id_']),
+                    'filter'=>[0=>'Draft','1'=>'Completed'],
+                    'value'=>function($model){
+                        if($model->status == 0){
+                            return '<span class="label label-warning" style="font-size:85%;"> Draft </span>';
+                        }
+                        if($model->status == 1){
+                            return '<span class="label label-success" style="font-size:85%;"> Completed </span>';
+                        }
+                    },
+                    'format'=>'html',
+                    'headerOptions'=>['style'=>'width:100px']
+                ],
+
+                'name',
+                [
+                    'attribute'=>'base.name',
+                ],
+
+                [
+                    'label'=>'Total',
+                    'value'=>function($model){
+                        if($model->result){
+                            $result = json_decode($model->result,1);
+                            return $result['total'];
+                        }
+                    }
                 ],
                 [
-                    'class' => \core\components\gridColumns\NameColumn::className(),
+                    'label'=>'Created',
+                    'value'=>function($model){
+                        if($model->result){
+                            $result = json_decode($model->result,1);
+                            return $result['created'];
+                        }
+                    }
                 ],
+                [
+                    'label'=>'Updated',
+                    'value'=>function($model){
+                        if($model->result){
+                            $result = json_decode($model->result,1);
+                            return $result['updated'];
+                        }
+                    }
+                ],
+                [
+                    'label'=>'Dub',
+                    'value'=>function($model){
+                        if($model->result){
+                            $result = json_decode($model->result,1);
+                            return $result['dub'];
+                        }
+                    }
+                ],
+
                 [
                     'class' => 'yii\grid\CheckboxColumn',
                     'options'=>['style'=>'width:10px']
@@ -87,19 +136,6 @@ class Files extends \app\models\base\Files
         return $option;
     }
 
-
-    /*public function optionUpdate()
-    {
-        $option = [
-            'items' => [
-                'name' => 'Text',
-            ]
-        ];
-
-        return $option;
-    }*/
-
-
     public function optionView()
     {
         $option = [
@@ -107,8 +143,16 @@ class Files extends \app\models\base\Files
                 'id',
                 'status',
                 'name',
-                'created_at',
-                'created_by',
+                'created_at:datetime',
+                'updated_at:datetime',
+                [
+                    'label'=>'Created By',
+                    'attribute'=>'createdBy.username',
+                ],
+                [
+                    'label'=>'Updated By',
+                    'attribute'=>'updatedBy.username',
+                ]
             ]
         ];
 

@@ -15,7 +15,7 @@ class Clients extends \app\models\base\Clients
     public function rules()
     {
         return [
-            [['status', 'date_create', 'user_create', 'date_update', 'user_update', 'country_id', 'city_id'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'country_id', 'city_id'], 'integer'],
             [['email','baseIds'], 'required'],
             [['other'], 'string'],
             [['email'], 'unique'],
@@ -199,10 +199,16 @@ class Clients extends \app\models\base\Clients
                 ],
                 $otherAttributes,
                 [
-                    'created_at',
-                    'updated_at',
-                    'created_by',
-                    'updated_by'
+                    'created_at:datetime',
+                    'updated_at:datetime',
+                    [
+                        'label'=>'Created By',
+                        'attribute'=>'createdBy.username',
+                    ],
+                    [
+                        'label'=>'Updated By',
+                        'attribute'=>'updatedBy.username',
+                    ]
                 ]
             )
         ];

@@ -69,4 +69,28 @@ class Files extends \yii\db\ActiveRecord
             'state' => 'State',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBase()
+    {
+        return $this->hasOne(Base::className(), ['id' => 'base_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'updated_by']);
+    }
 }

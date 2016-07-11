@@ -134,10 +134,16 @@ class Base extends \app\models\base\Base
                 'status',
                 'name',
                 'group.name',
-                'created_at',
-                'updated_at',
-                'created_by',
-                'updated_by'
+                'created_at:datetime',
+                'updated_at:datetime',
+                [
+                    'label'=>'Created By',
+                    'attribute'=>'createdBy.username',
+                ],
+                [
+                    'label'=>'Updated By',
+                    'attribute'=>'updatedBy.username',
+                ]
             ]
         ];
 

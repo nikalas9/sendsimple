@@ -72,13 +72,25 @@ class ImportController extends AdminController
             $emailColumn = $emailKey[0];
             unset($columns[$emailColumn]);
 
-            $indexCreate = 0;
-            $indexUpdate = 0;
+            $iTotal = 0;
+            $iCreate = 0;
+            $iUpdate = 0;
+            $iDub = 0;
+
+            $uniqEmail = [];
 
             foreach($listData as $line){
 
                 $email = trim($line[$emailColumn]);
                 if(filter_var($email,FILTER_VALIDATE_EMAIL)){
+
+                    $iTotal++;
+                    if(in_array($email,$uniqEmail)){
+                        $iDub++;
+                    }
+                    else{
+                        array_push($uniqEmail,$email);
+                    }
 
                     $client = Clients::find()
                         ->where([
@@ -109,7 +121,7 @@ class ImportController extends AdminController
                         $clientBase->file_id = $model->id;
                         $clientBase->save(false);
 
-                        $indexCreate++;
+                        $iCreate++;
                     }
                     else{
 
@@ -139,13 +151,19 @@ class ImportController extends AdminController
                             $clientBase->file_id = $model->id;
                             $clientBase->save(false);
 
-                            $indexUpdate++;
+                            $iUpdate++;
                         }
                     }
                 }
             }
-
+            $model->status = 1;
             $model->column = json_encode($model->column);
+            $model->result = json_encode([
+                'total'=>$iTotal,
+                'created'=>$iCreate,
+                'updated'=>$iUpdate,
+                'dub'=>$iDub,
+            ]);
             $model->update(false);
 
             return $this->redirect(['view','id'=>$model->id]);

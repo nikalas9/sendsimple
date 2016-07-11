@@ -36,7 +36,7 @@ class Clients extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'date_create', 'user_create', 'date_update', 'user_update', 'country_id', 'city_id'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'country_id', 'city_id'], 'integer'],
             [['email', 'country_id', 'city_id', 'other'], 'required'],
             [['other'], 'string'],
             [['email'], 'string', 'max' => 100],
@@ -68,5 +68,21 @@ class Clients extends \yii\db\ActiveRecord
     public function getClientsBases()
     {
         return $this->hasMany(ClientsBase::className(), ['client_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'updated_by']);
     }
 }
