@@ -18,6 +18,12 @@ class Select extends BaseWidget{
         //$options = ['prompt' => ''];
         //$this->options = array_merge($options,$this->options);
 
+        if(isset($this->options['multiple']) and $this->options['multiple']){
+            if(strpos($model->$attribute,',')){
+                $model->$attribute = explode(',',$model->$attribute);
+            }
+        }
+
         echo $form->field($model, $attribute, $this->fieldOptions)->dropDownList($this->params['data'],$this->options);
     }
 }

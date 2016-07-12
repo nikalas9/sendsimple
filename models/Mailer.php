@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -10,13 +11,34 @@ use yii\behaviors\BlameableBehavior;
 class Mailer extends \app\models\base\Mailer
 {
 
-    public function behaviors()
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['account_id'], 'integer'],
+            [['base_ids', 'account_id', 'name'], 'required'],
+            [['body', 'files'], 'string'],
+            [['name'], 'string', 'max' => 255],
+        ];
+    }
+
+    public function load($data, $formName = null)
+    {
+        if(Yii::$app->request->isPost){
+            $data['Mailer']['base_ids'] = implode(',',$data['Mailer']['base_ids']);
+        }
+        return parent::load($data, $formName);
+    }
+
+    /*public function behaviors()
     {
         return [
             TimestampBehavior::className(),
             BlameableBehavior::className(),
         ];
-    }
+    }*/
 
     // admin option ----------------------------------------------------------------------------------------------------
 
@@ -62,8 +84,30 @@ class Mailer extends \app\models\base\Mailer
 
     public function optionUpdate()
     {
+        $base = Base::find()->with(['group'])->all();
+        $baseData = ArrayHelper::map($base,'id','name','group.name');
+
+        $account = Account::find()->all();
+        $accountData = [];
+        if($account){
+            foreach($account as $row){
+                $accountData[ $row['id'] ] = $row['from_email'].' ('.$row['from_name'].')';
+            }
+        }
+
         $option = [
             'items' => [
+                'base_ids'=>[
+                    'type'=>'Select2',
+                    'data'=>$baseData,
+                    'options'=>[
+                        'multiple'=>true
+                    ]
+                ],
+                'account_id' => [
+                    'type'=>'Select',
+                    'data'=>$accountData,
+                ],
                 'name' => 'Text',
                 'body' => 'Builder',
             ]

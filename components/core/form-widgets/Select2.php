@@ -14,6 +14,12 @@ class Select2 extends BaseWidget{
         $fieldOptions = $this->fieldOptions;
         $options = $this->options;
 
+        if(isset($this->options['multiple']) and $this->options['multiple']){
+            if(strpos($model->$attribute,',')){
+                $model->$attribute = explode(',',$model->$attribute);
+            }
+        }
+
         $data = $this->params['data'];
 
         return $this->render('select2',compact('form','model','attribute','fieldOptions','options','data'));

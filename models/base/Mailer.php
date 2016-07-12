@@ -78,4 +78,12 @@ class Mailer extends \yii\db\ActiveRecord
             'max' => 'Max',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAccount()
+    {
+        return $this->hasOne(Account::className(), ['id' => 'account_id']);
+    }
 }

@@ -44,6 +44,11 @@ class ManagerMenuWidget extends Widget
             'link' => Url::to(['/mailer/index']),
             'icon' => 'fa-cloud',
         ];
+        $list[] = [
+            'title' => 'Account',
+            'link' => Url::to(['/account/index']),
+            'icon' => 'fa-cloud',
+        ];
         if(Yii::$app->user->can('admin')){
             $list[] = [
                 'title' => 'Users',

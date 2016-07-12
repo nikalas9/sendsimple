@@ -83,6 +83,7 @@ class Files extends \app\models\base\Files
 
                 'name',
                 [
+                    'label'=>'Base Name',
                     'attribute'=>'base.name',
                 ],
 
