@@ -4,6 +4,8 @@ namespace app\controllers;
 use core\components\AdminController;
 use Yii;
 
+require_once("../components/bounceHandler/bounce_driver.class.php");
+
 /**
  * Site controller
  */
@@ -56,4 +58,49 @@ class MailerController extends AdminController
         return $result;
 
     }
+
+    public function actionRead()
+    {
+        echo '<pre>';
+
+        $mailbox = yii::$app->imap->connection;
+
+        //$mailIds = $mailbox->searchMailBox('NEW');// Prints all Mail ids.
+        //print_r($mailIds);
+
+        //$mail = $mailbox->getMail(2);
+        //print_r($mail);
+
+        $mailbox->saveMail(2);
+    }
+
+    public function actionBounce()
+    {
+
+        $bouncehandler = new \Bouncehandler();
+
+        $bounce = file_get_contents("email.eml");
+        //echo $bounce;
+        //exit;
+
+        $multiArray = @$bouncehandler->get_the_facts($bounce);
+
+        echo '<pre>';
+        print_r($multiArray);
+    }
+
+    public function actionBounce2()
+    {
+        require_once("../PhpBounceMailParser/Parser.php");
+
+        // Here is a complete working example
+        $parser = new \PhpBounceMailParser\Parser();
+        $parser->parseFile('email.eml')
+            ->outputCsv();
+
+        print_r($parser);
+        exit;
+
+    }
+
 }

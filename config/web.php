@@ -39,6 +39,16 @@ $config = [
             // for the mailer to send real emails.
             //'useFileTransport' => true,
         ],
+        'imap' => [
+            'class' => 'roopz\imap\Imap',
+            'connection' => [
+                'imapPath' => '{imap.yandex.ru:993/imap/ssl}INBOX',
+                'imapLogin' => 'nikalas10@ya.ru',
+                'imapPassword' => 'hgnk2310',
+                'serverEncoding'=>'utf-8', // utf-8 default.
+                'attachmentsDir'=>'/'
+            ],
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

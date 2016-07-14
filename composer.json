@@ -21,7 +21,8 @@
         "tijsverkoyen/css-to-inline-styles": "^1.5",
         "mihaildev/yii2-elfinder": "*",
         "amnah/yii2-user": "*",
-        "phpoffice/phpexcel": "^1.8"
+        "phpoffice/phpexcel": "^1.8",
+        "roopz/yii2-imap": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
