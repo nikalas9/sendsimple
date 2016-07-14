@@ -1,0 +1,322 @@
+Received: from mxback9j.mail.yandex.net ([127.0.0.1])
+	by mxback9j.mail.yandex.net with LMTP id JQAiLhMA
+	for <nikalas10@ya.ru>; Tue, 12 Jul 2016 14:37:22 +0300
+Received: by mxback9j.mail.yandex.net (Yandex)
+	id A4E0E566DCA2; Tue, 12 Jul 2016 14:37:22 +0300 (MSK)
+Date: Tue, 12 Jul 2016 14:37:22 +0300 (MSK)
+From: mailer-daemon@yandex.ru
+Subject: =?UTF-8?B?0J3QtdC00L7RgdGC0LDQstC70LXQvdC90L7QtSDRgdC+0L7QsdGJ0LXQvdC40LU=?=
+To: nikalas10@ya.ru
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: multipart/report; report-type=delivery-status;
+	boundary="5BFF7566021B.1468323442/mxback9j.mail.yandex.net"
+Message-Id: <20160712113722.A4E0E566DCA2@mxback9j.mail.yandex.net>
+X-Yandex-Forward: bd70e7effd5e3fd89f470103b01409dd
+X-Antivirus: avast! (VPS 160711-1, 11.07.2016), Inbound message
+X-Antivirus-Status: Clean
+
+This is a MIME-encapsulated message.
+
+--5BFF7566021B.1468323442/mxback9j.mail.yandex.net
+Content-Description: Notification
+Content-Type: text/plain; charset=utf-8
+
+              **********
+
+Это письмо отправлено почтовым сервером yandex.ru.
+
+К сожалению, мы вынуждены сообщить Вам о том, что Ваше письмо не может
+быть отправлено одному или нескольким адресатам. Причины указаны ниже.
+
+Пожалуйста, не отвечайте на это сообщение. 
+
+              **********
+
+This is the mail system at host yandex.ru.
+
+I'm sorry to have to inform you that your message could not
+be delivered to one or more recipients. It's attached below.
+
+Please, do not reply to this message.
+
+
+<nikalas9h4dfh5f@ya.ru>: host 127.0.0.1[127.0.0.1] said: 554 5.1.1 Unknown
+    user; JQAiLhMA 159314836818237415 3490 (in reply to end of DATA command)
+
+--5BFF7566021B.1468323442/mxback9j.mail.yandex.net
+Content-Description: Delivery report
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; mxback9j.mail.yandex.net
+X-Yandex-Queue-ID: 5BFF7566021B
+X-Yandex-Sender: rfc822; nikalas10@ya.ru
+Arrival-Date: Tue, 12 Jul 2016 14:37:22 +0300 (MSK)
+
+Final-Recipient: rfc822; nikalas9h4dfh5f@ya.ru
+Original-Recipient: rfc822;nikalas9h4dfh5f@ya.ru
+Action: failed
+Status: 5.1.1
+Remote-MTA: dns; 127.0.0.1
+Diagnostic-Code: smtp; 554 5.1.1 Unknown user; JQAiLhMA 159314836818237415 3490
+
+--5BFF7566021B.1468323442/mxback9j.mail.yandex.net
+Content-Description: Undelivered Message
+Content-Type: message/rfc822
+
+Return-Path: <nikalas10@ya.ru>
+Received: from mxback9j.mail.yandex.net (localhost [127.0.0.1])
+	by mxback9j.mail.yandex.net (Yandex) with ESMTP id 5BFF7566021B
+	for <nikalas9h4dfh5f@ya.ru>; Tue, 12 Jul 2016 14:37:22 +0300 (MSK)
+Received: from forward14j.cmail.yandex.net (forward14j.cmail.yandex.net [2a02:6b8:0:1630::b4])
+	by mxback9j.mail.yandex.net (nwsmtp/Yandex) with ESMTP id 11tAq238Xc-bLtiijWm;
+	Tue, 12 Jul 2016 14:37:21 +0300
+X-Yandex-Front: mxback9j.mail.yandex.net
+X-Yandex-TimeMark: 1468323441
+X-Yandex-Spam: 1
+X-Yandex-Suid-Status: 1 0
+X-Yandex-Hint: bGFiZWw9U3lzdE1ldGthU086dHJ1c3RfNgpzZXNzaW9uX2lkPTExdEFxMjM4WGMtYkx0aWlqV20KaXBmcm9tPTJhMDI6NmI4OjA6MTYzMDo6YjQK
+Received: from smtp12.mail.yandex.net (smtp12.mail.yandex.net [IPv6:2a02:6b8:0:801:1::11])
+	by forward14j.cmail.yandex.net (Yandex) with ESMTP id 9B64420C2A
+	for <nikalas9h4dfh5f@ya.ru>; Tue, 12 Jul 2016 14:37:21 +0300 (MSK)
+Received: from smtp12.mail.yandex.net (localhost [127.0.0.1])
+	by smtp12.mail.yandex.net (Yandex) with ESMTP id 99DC416A0291
+	for <nikalas9h4dfh5f@ya.ru>; Tue, 12 Jul 2016 14:37:21 +0300 (MSK)
+Received: by smtp12.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id 4i4qMltimS-bL5GweRT;
+	Tue, 12 Jul 2016 14:37:21 +0300
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(Client certificate not present)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ya.ru; s=mail; t=1468323441;
+	bh=+50wVLysq/hpz+Pa7bkIaNUQP93NmqJZrzz602445sE=;
+	h=Message-ID:Date:Subject:From:To;
+	b=pm+CrN+VtAc+OU4h0Pn5J9Uctdl9n8jln2LxRQUGB7toGx46Mq7Yor1/B6b7XdILK
+	 fEvK2y/2EiZrkIk4WBrMj9hTUTLWl70DgLTmkC9PohCS74ue/jgjXZPfet7qezeGA8
+	 PEnI/UmGni+quwIk5XwKpNotXBRtJKs0qvw76IOs=
+Authentication-Results: smtp12.mail.yandex.net; dkim=pass header.i=@ya.ru
+X-Yandex-Suid-Status: 1 0
+Message-ID: <f4e80dae04468c8756126dfd9bdc46b7@sender>
+Date: Tue, 12 Jul 2016 14:41:21 +0300
+Subject: Test
+From: Andrey Nikolaev <nikalas10@ya.ru>
+To: nikalas9h4dfh5f@ya.ru
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Antivirus: avast! (VPS 160711-1, 11.07.2016), Outbound message
+X-Antivirus-Status: Clean
+
+<!DOCTYPE html>
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8"></head><body><div style=3D"background-color: #fff;"><table cellsp=
+acing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" width=3D"644"><=
+tbody><tr><td align=3D"left" valign=3D"top" border=3D"0"><div><div data-typ=
+e=3D"web"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"=
+background: #ffffff;"><tbody><tr><td border=3D"0" align=3D"left" valign=3D"=
+top" width=3D"494" style=3D"border: 0;"><div style=3D"position: relative;">=
+</div></td><td border=3D"0" align=3D"left" valign=3D"top" width=3D"150" sty=
+le=3D"border: 0;"><div style=3D"position: relative;"><div style=3D"text-ali=
+gn: right; color: #777777; font-family: Arial, 'Helvetica CY', 'Nimbus Sans=
+ L', sans-serif; font-size: 12px;"><a href=3D"%7B%24link.web%7D" style=3D"c=
+olor: #777777; font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-se=
+rif; font-size: 12px; text-decoration: underline;">=D0=92=D0=B5=D0=B1-=D0=
+=B2=D0=B5=D1=80=D1=81=D0=B8=D1=8F =D0=BF=D0=B8=D1=81=D1=8C=D0=BC=D0=B0</a><=
+/div>
+</div></td></tr></tbody></table></div></div></td></tr><tr><td align=3D"left=
+" valign=3D"top" border=3D"0"><div><table data-type=3D"header1" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"border-top-le=
+ft-radius: 0px; border-top-right-radius: 0px; overflow: hidden; background:=
+ #cccccc;"><tbody><tr><td border=3D"0" colspan=3D"5" height=3D"10" style=3D=
+"border: 0;"><img src=3D"http://green.sendsimple.net/public/builder/images/=
+blank.gif" height=3D"10" width=3D"1" style=3D"border: 0; display: block;"><=
+/td></tr><tr><td border=3D"0" width=3D"10" style=3D"border: 0;"><div style=
+=3D"line-height:0; width:10px; height:1px;"><img src=3D"http://green.sendsi=
+mple.net/public/builder/images/blank.gif" height=3D"1" width=3D"10" style=
+=3D"border: 0; display: block;"></div></td><td border=3D"0" align=3D"left" =
+valign=3D"middle" width=3D"1%" style=3D"border: 0;"><div style=3D"position:=
+ relative;"><div style=3D"text-align: left;"><img src=3D"http://green.sends=
+imple.net/public/userfiles/templates/555c768c29d2a/resource_20150520_145821=
+=2Ejpg" style=3D"width: 201px; height: 143px;" title=3D"=D0=9A=D0=B0=D1=80=
+=D1=82=D0=B8=D0=BD=D0=BA=D0=B0"></div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><img src=3D"h=
+ttp://green.sendsimple.net/public/builder/images/blank.gif" height=3D"1" wi=
+dth=3D"10" style=3D"border: 0; display: block;"></td><td border=3D"0" align=
+=3D"left" valign=3D"middle" style=3D"border: 0;"><div style=3D"position: re=
+lative;"><div style=3D"text-align: left; color: #686868; font-family: Arial=
+, 'Helvetica CY', 'Nimbus Sans L', sans-serif; font-size: 28px;">=D0=9D=D0=
+=B0=D0=B7=D0=B2=D0=B0=D0=BD=D0=B8=D0=B5 =D1=81=D0=B0=D0=B9=D1=82=D0=B0 =D0=
+=BA=D0=BE=D0=BC=D0=BF=D0=B0=D0=BD=D0=B8=D0=B8</div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><img src=3D"h=
+ttp://green.sendsimple.net/public/builder/images/blank.gif" height=3D"1" wi=
+dth=3D"10" style=3D"border: 0; display: block;"></td></tr><tr><td border=3D=
+"0" colspan=3D"5" height=3D"10" style=3D"border: 0;"><img src=3D"http://gre=
+en.sendsimple.net/public/builder/images/blank.gif" height=3D"10" width=3D"1=
+" style=3D"border: 0; display: block;"></td></tr></tbody></table></div></td=
+></tr><tr><td align=3D"left" valign=3D"top" border=3D"0"><div><table data-t=
+ype=3D"4" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" s=
+tyle=3D"background: #ffffff;"><tbody><tr><td border=3D"0" colspan=3D"3" hei=
+ght=3D"10" style=3D"border: 0;"><img src=3D"http://green.sendsimple.net/pub=
+lic/builder/images/blank.gif" height=3D"10" width=3D"1" style=3D"border: 0;=
+ display: block;"></td></tr><tr><td border=3D"0" width=3D"10" style=3D"bord=
+er: 0;"><img src=3D"http://green.sendsimple.net/public/builder/images/blank=
+=2Egif" height=3D"1" width=3D"10" style=3D"border: 0; display: block;"></td=
+><td border=3D"0" align=3D"left" valign=3D"top" style=3D"border: 0;"><div s=
+tyle=3D"position: relative;"><div style=3D"text-align: left; color: #686868=
+; font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif; font-siz=
+e: 28px; font-weight: normal;">=D0=93=D0=BB=D0=B0=D0=B2=D0=BD=D0=B0=D1=8F =
+=D0=B8=D0=B4=D0=B5=D1=8F =D0=BF=D0=B8=D1=81=D1=8C=D0=BC=D0=B0</div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><div style=3D=
+"line-height:0; width:10px; height:1px;"><img src=3D"http://green.sendsimpl=
+e.net/public/builder/images/blank.gif" height=3D"1" width=3D"10" style=3D"b=
+order: 0; display: block;"></div></td></tr><tr><td border=3D"0" colspan=3D"=
+3" height=3D"10" style=3D"border: 0;"><img src=3D"http://green.sendsimple.n=
+et/public/builder/images/blank.gif" height=3D"10" width=3D"1" style=3D"bord=
+er: 0; display: block;"></td></tr></tbody></table></div></td></tr><tr><td a=
+lign=3D"left" valign=3D"top" border=3D"0"><div><table data-type=3D"9" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"backgro=
+und: #ffffff;"><tbody><tr><td border=3D"0" colspan=3D"5" height=3D"10" styl=
+e=3D"border: 0;"><img src=3D"http://green.sendsimple.net/public/builder/ima=
+ges/blank.gif" height=3D"10" width=3D"1" style=3D"border: 0; display: block=
+;"></td></tr><tr><td border=3D"0" width=3D"10" style=3D"border: 0;"><img sr=
+c=3D"http://green.sendsimple.net/public/builder/images/blank.gif" height=3D=
+"1" width=3D"10" style=3D"border: 0; display: block;"></td><td border=3D"0"=
+ align=3D"left" valign=3D"top" style=3D"border: 0;"><div style=3D"position:=
+ relative;"><div style=3D"text-align: left; color: #000000; font-family: Ar=
+ial, 'Helvetica CY', 'Nimbus Sans L', sans-serif; font-size: 14px; line-hei=
+ght: 1.3;">=D0=94=D0=BE=D0=B1=D1=80=D1=8B=D0=B9 =D0=B4=D0=B5=D0=BD=D1=8C, {=
+$contact.name}<br><br>
+=D0=92=D1=81=D1=82=D0=B0=D0=B2=D1=8C=D1=82=D0=B5 =D1=81=D1=8E=D0=B4=D0=B0 =
+=D1=82=D0=B5=D0=BA=D1=81=D1=82 =D0=B2=D0=B0=D1=88=D0=B5=D0=B3=D0=BE =D1=81=
+=D0=BE=D0=BE=D0=B1=D1=89=D0=B5=D0=BD=D0=B8=D1=8F. =D0=94=D0=BB=D1=8F =D1=82=
+=D0=BE=D0=B3=D0=BE, =D1=87=D1=82=D0=BE =D0=B1=D1=8B =D0=B2=D0=B0=D1=88=D0=
+=B0 =D1=80=D0=B0=D1=81=D1=81=D1=8B=D0=BB=D0=BA=D0=B0 =D0=B1=D1=8B=D0=BB=D0=
+=B0 =D1=8D=D1=84=D1=84=D0=B5=D0=BA=D1=82=D0=B8=D0=B2=D0=BD=D0=BE=D0=B9 =D1=
+=81=D1=82=D0=B0=D1=80=D0=B0=D0=B9=D1=82=D0=B5=D1=81=D1=8C =D1=81=D0=BB=D0=
+=B5=D0=B4=D0=BE=D0=B2=D0=B0=D1=82=D1=8C =D1=81=D0=BB=D0=B5=D0=B4=D1=83=D1=
+=8E=D1=89=D0=B8=D0=BC =D1=81=D0=BE=D0=B2=D0=B5=D1=82=D0=B0=D0=BC:
+<ul><li>=D0=BF=D0=BE=D0=B4=D1=83=D0=BC=D0=B0=D0=B9=D1=82=D0=B5 =D1=87=D0=B5=
+=D0=B3=D0=BE =D0=B2=D1=8B =D1=85=D0=BE=D1=82=D0=B8=D1=82=D0=B5 =D0=B4=D0=BE=
+=D0=B1=D0=B8=D1=82=D1=8C=D1=81=D1=8F =D1=8D=D1=82=D0=BE=D0=B9 =D1=80=D0=B0=
+=D1=81=D1=81=D1=8B=D0=BB=D0=BA=D0=BE=D0=B9</li>
+	<li>=D0=BF=D0=BE=D0=B4=D1=83=D0=BC=D0=B0=D0=B9=D1=82=D0=B5 =D0=BA=D1=82=D0=
+=BE =D0=B2=D0=B0=D1=88=D0=B8 =D0=BF=D0=BE=D0=BB=D1=83=D1=87=D0=B0=D1=82=D0=
+=B5=D0=BB=D0=B8</li>
+	<li>=D0=BF=D0=B8=D1=88=D0=B8=D1=82=D0=B5 =D1=82=D0=B0=D0=BA, =D0=BA=D0=B0=
+=D0=BA-=D0=B1=D1=83=D0=B4=D1=82=D0=BE =D0=B2=D1=8B =D0=BE=D0=B1=D1=80=D0=B0=
+=D1=89=D0=B0=D0=B5=D1=82=D0=B5=D1=81=D1=8C =D0=BA =D0=BE=D0=B4=D0=BD=D0=BE=
+=D0=BC=D1=83 =D1=87=D0=B5=D0=BB=D0=BE=D0=B2=D0=B5=D0=BA=D1=83</li>
+</ul></div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><img src=3D"h=
+ttp://green.sendsimple.net/public/builder/images/blank.gif" height=3D"1" wi=
+dth=3D"10" style=3D"border: 0; display: block;"></td><td border=3D"0" align=
+=3D"left" valign=3D"top" width=3D"1%" style=3D"border: 0;"><div style=3D"po=
+sition: relative;"><div style=3D"text-align: left;"><img src=3D"/public/bui=
+lder/images/blank.gif" title=3D"=D0=9A=D0=B0=D1=80=D1=82=D0=B8=D0=BD=D0=BA=
+=D0=B0" width=3D"201"></div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><div style=3D=
+"line-height:0; width:10px; height:1px;"><img src=3D"http://green.sendsimpl=
+e.net/public/builder/images/blank.gif" height=3D"1" width=3D"10" style=3D"b=
+order: 0; display: block;"></div></td></tr><tr><td border=3D"0" colspan=3D"=
+5" height=3D"10" style=3D"border: 0;"><img src=3D"http://green.sendsimple.n=
+et/public/builder/images/blank.gif" height=3D"10" width=3D"1" style=3D"bord=
+er: 0; display: block;"></td></tr></tbody></table></div></td></tr><tr><td a=
+lign=3D"left" valign=3D"top" border=3D"0"><div><table data-type=3D"1" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"backgro=
+und: #ffffff;"><tbody><tr><td border=3D"0" colspan=3D"3" height=3D"10" styl=
+e=3D"border: 0;"><img src=3D"http://green.sendsimple.net/public/builder/ima=
+ges/blank.gif" height=3D"10" width=3D"1" style=3D"border: 0; display: block=
+;"></td></tr><tr><td border=3D"0" width=3D"10" style=3D"border: 0;"><img sr=
+c=3D"http://green.sendsimple.net/public/builder/images/blank.gif" height=3D=
+"1" width=3D"10" style=3D"border: 0; display: block;"></td><td border=3D"0"=
+ align=3D"left" valign=3D"top" style=3D"border: 0;"><div style=3D"position:=
+ relative;"><div style=3D"text-align: left; color: #000000; font-family: Ar=
+ial, 'Helvetica CY', 'Nimbus Sans L', sans-serif; font-size: 14px; line-hei=
+ght: 1.3;">=D0=92=D1=81=D0=B5=D0=B3=D0=B4=D0=B0 =D0=B3=D0=BE=D0=B2=D0=BE=D1=
+=80=D0=B8=D1=82=D0=B5 =D0=B4=D0=BE =D1=81=D0=B2=D0=B8=D0=B4=D0=B0=D0=BD=D1=
+=8C=D1=8F.</div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><div style=3D=
+"line-height:0; width:10px; height:1px;"><img src=3D"http://green.sendsimpl=
+e.net/public/builder/images/blank.gif" height=3D"1" width=3D"10" style=3D"b=
+order: 0; display: block;"></div></td></tr><tr><td border=3D"0" colspan=3D"=
+3" height=3D"10" style=3D"border: 0;"><img src=3D"http://green.sendsimple.n=
+et/public/builder/images/blank.gif" height=3D"10" width=3D"1" style=3D"bord=
+er: 0; display: block;"></td></tr></tbody></table></div></td></tr><tr><td a=
+lign=3D"left" valign=3D"top" border=3D"0"><div><table data-type=3D"contact1=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"=
+background: #cccccc;"><tbody><tr><td border=3D"0" colspan=3D"5" height=3D"1=
+0" style=3D"border: 0;"><img src=3D"http://green.sendsimple.net/public/buil=
+der/images/blank.gif" height=3D"10" width=3D"1" style=3D"border: 0; display=
+: block;"></td></tr><tr><td border=3D"0" width=3D"10" style=3D"border: 0;">=
+<img src=3D"http://green.sendsimple.net/public/builder/images/blank.gif" he=
+ight=3D"1" width=3D"10" style=3D"border: 0; display: block;"></td><td borde=
+r=3D"0" align=3D"left" valign=3D"top" style=3D"border: 0;"><div style=3D"po=
+sition: relative;"><div style=3D"text-align: left; color: #686868; font-fam=
+ily: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif; font-size: 14px;">=
+=D0=A1 =D1=83=D0=B2=D0=B0=D0=B6=D0=B5=D0=BD=D0=B8=D0=B5=D0=BC,<br>
+&lt;=D0=98=D0=BC=D1=8F =D0=BE=D1=82=D0=BF=D1=80=D0=B0=D0=B2=D0=B8=D1=82=D0=
+=B5=D0=BB=D1=8F&gt;<br>
+&lt;=D0=94=D0=BE=D0=BB=D0=B6=D0=BD=D0=BE=D1=81=D1=82=D1=8C =D0=BE=D1=82=D0=
+=BF=D1=80=D0=B0=D0=B2=D0=B8=D1=82=D0=B5=D0=BB=D1=8F&gt;<br>
+&lt;=D0=9A=D0=BE=D0=BC=D0=BF=D0=B0=D0=BD=D0=B8=D1=8F =D0=BE=D1=82=D0=BF=D1=
+=80=D0=B0=D0=B2=D0=B8=D1=82=D0=B5=D0=BB=D1=8F&gt;<br>
+&lt;=D0=A1=D0=B0=D0=B9=D1=82 =D0=BE=D1=82=D0=BF=D1=80=D0=B0=D0=B2=D0=B8=D1=
+=82=D0=B5=D0=BB=D1=8F&gt;</div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><img src=3D"h=
+ttp://green.sendsimple.net/public/builder/images/blank.gif" height=3D"1" wi=
+dth=3D"10" style=3D"border: 0; display: block;"></td><td border=3D"0" align=
+=3D"left" valign=3D"middle" width=3D"1%" style=3D"border: 0;"><div style=3D=
+"position: relative;"><div style=3D"text-align: left;"><img src=3D"/public/=
+builder/images/blank.gif" title=3D"=D0=9A=D0=B0=D1=80=D1=82=D0=B8=D0=BD=D0=
+=BA=D0=B0" width=3D"201"></div>
+</div></td><td border=3D"0" width=3D"10" style=3D"border: 0;"><div style=3D=
+"line-height:0; width:10px; height:1px;"><img src=3D"http://green.sendsimpl=
+e.net/public/builder/images/blank.gif" height=3D"1" width=3D"10" style=3D"b=
+order: 0; display: block;"></div></td></tr><tr><td border=3D"0" colspan=3D"=
+5" height=3D"10" style=3D"border: 0;"><img src=3D"http://green.sendsimple.n=
+et/public/builder/images/blank.gif" height=3D"10" width=3D"1" style=3D"bord=
+er: 0; display: block;"></td></tr></tbody></table></div></td></tr><tr><td a=
+lign=3D"left" valign=3D"top" border=3D"0"><div><div style=3D"position: rela=
+tive;" data-type=3D"footer"><div>
+<div style=3D"text-align: center; color: #777777; font-family: Arial, 'Helv=
+etica CY', 'Nimbus Sans L', sans-serif; font-size: 12px;">=D0=92=D1=8B =D0=
+=BF=D0=BE=D0=BB=D1=83=D1=87=D0=B8=D0=BB=D0=B8 =D1=8D=D1=82=D1=83 =D1=80=D0=
+=B0=D1=81=D1=81=D1=8B=D0=BB=D0=BA=D1=83 =D0=BD=D0=B0 =D0=B0=D0=B4=D1=80=D0=
+=B5=D1=81 {$contact.email}, =D0=BF=D0=BE=D1=82=D0=BE=D0=BC=D1=83 =D1=87=D1=
+=82=D0=BE =D1=8F=D0=B2=D0=BB=D1=8F=D0=B5=D1=82=D0=B5=D1=81=D1=8C =D0=BA=D0=
+=BB=D0=B8=D0=B5=D0=BD=D1=82=D0=BE=D0=BC {$group.name}.<br><a href=3D"%7B%24=
+link.unsubscribe%7D" style=3D"color: #777777; font-family: Arial, 'Helvetic=
+a CY', 'Nimbus Sans L', sans-serif; font-size: 12px; text-decoration: under=
+line;">=D0=9E=D1=82=D0=BF=D0=B8=D1=81=D0=B0=D1=82=D1=8C=D1=81=D1=8F =D0=BE=
+=D1=82 =D1=80=D0=B0=D1=81=D1=81=D1=8B=D0=BB=D0=BA=D0=B8</a>.</div>
+</div>
+</div></div></td></tr></tbody></table></div>
+<br /><br />
+<hr style=3D'border:none; color:#909090; background-color:#B0B0B0; height: =
+1px; width: 99%;' />
+<table style=3D'border-collapse:collapse;border:none;'>
+	<tr>
+		<td style=3D'border:none;padding:0px 15px 0px 8px'>
+			<a href=3D"https://www.avast.com/sig-email?utm_medium=3Demail&utm_source=
+=3Dlink&utm_campaign=3Dsig-email&utm_content=3Demailclient">
+				<img border=3D0 src=3D"http://static.avast.com/emails/avast-mail-stamp.=
+png" alt=3D"Avast logo" />
+			</a>
+		</td>
+		<td>
+			<p style=3D'color:#3d4d5a; font-family:"Calibri","Verdana","Arial","Helv=
+etica"; font-size:12pt;'>
+				=D0=AD=D1=82=D0=BE =D1=81=D0=BE=D0=BE=D0=B1=D1=89=D0=B5=D0=BD=D0=B8=D0=
+=B5 =D0=BF=D1=80=D0=BE=D0=B2=D0=B5=D1=80=D0=B5=D0=BD=D0=BE =D0=BD=D0=B0 =D0=
+=B2=D0=B8=D1=80=D1=83=D1=81=D1=8B =D0=B0=D0=BD=D1=82=D0=B8=D0=B2=D0=B8=D1=
+=80=D1=83=D1=81=D0=BE=D0=BC Avast.
+				<br><a href=3D"https://www.avast.com/sig-email?utm_medium=3Demail&utm_s=
+ource=3Dlink&utm_campaign=3Dsig-email&utm_content=3Demailclient">www.avast.=
+com</a>
+			</p>
+		</td>
+	</tr>
+</table>
+<br />
+</body></html>
+
+
+--5BFF7566021B.1468323442/mxback9j.mail.yandex.net--
