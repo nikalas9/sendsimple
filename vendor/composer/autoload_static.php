@@ -52,6 +52,7 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         'P' => 
         array (
             'PhpMimeMailParser\\' => 18,
+            'PhpBounceMailParser\\' => 20,
         ),
         'F' => 
         array (
@@ -127,6 +128,10 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         'PhpMimeMailParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-mime-mail-parser/php-mime-mail-parser/src',
+        ),
+        'PhpBounceMailParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sbknk/php-bounce-mail-parser/src',
         ),
         'Faker\\' => 
         array (

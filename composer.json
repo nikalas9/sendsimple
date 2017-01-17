@@ -12,7 +12,7 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.5",
@@ -23,7 +23,8 @@
         "amnah/yii2-user": "*",
         "phpoffice/phpexcel": "^1.8",
         "roopz/yii2-imap": "dev-master",
-        "php-mime-mail-parser/php-mime-mail-parser": "^2.6"
+        "php-mime-mail-parser/php-mime-mail-parser": "^2.6",
+        "sbknk/php-bounce-mail-parser": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

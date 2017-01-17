@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "21c0c0078f14ab72af37b23d3a2e2d80",
-    "content-hash": "f246eec0a865352ddf2f10c8a029cb16",
+    "hash": "f6e5687813b00e66210ba1161af6a49f",
+    "content-hash": "a6b1847c112cc7bd8ce1f7ea0355998e",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -602,6 +602,54 @@
                 "yii2"
             ],
             "time": "2016-05-31 10:52:03"
+        },
+        {
+            "name": "sbknk/php-bounce-mail-parser",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sbknk/php-bounce-mail-parser.git",
+                "reference": "de0150025e46cfff4ce1b552dc9ab6eefc4e442b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sbknk/php-bounce-mail-parser/zipball/de0150025e46cfff4ce1b552dc9ab6eefc4e442b",
+                "reference": "de0150025e46cfff4ce1b552dc9ab6eefc4e442b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mailparse": "*",
+                "php": ">=5.4.0",
+                "php-mime-mail-parser/php-mime-mail-parser": ">=2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpBounceMailParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Kenk",
+                    "email": "github.extern@sebastiankenk.de",
+                    "homepage": "https://github.com/sbknk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Library to analyze bounced emails",
+            "homepage": "https://github.com/sbknk/php-bounce-mail-parser",
+            "keywords": [
+                "MimeMailParser",
+                "bounce",
+                "mail",
+                "mailparse",
+                "mime"
+            ],
+            "time": "2016-12-02 11:38:28"
         },
         {
             "name": "studio-42/elfinder",
@@ -1311,6 +1359,7 @@
                 "codeception",
                 "yii2"
             ],
+            "abandoned": "codeception/codeception",
             "time": "2016-03-17 03:41:26"
         },
         {
@@ -1462,9 +1511,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "roopz/yii2-imap": 20
+        "roopz/yii2-imap": 20,
+        "sbknk/php-bounce-mail-parser": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

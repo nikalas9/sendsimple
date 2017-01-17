@@ -23,5 +23,6 @@ return array(
     'TijsVerkoyen\\CssToInlineStyles\\' => array($vendorDir . '/tijsverkoyen/css-to-inline-styles/src'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'PhpMimeMailParser\\' => array($vendorDir . '/php-mime-mail-parser/php-mime-mail-parser/src'),
+    'PhpBounceMailParser\\' => array($vendorDir . '/sbknk/php-bounce-mail-parser/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );
