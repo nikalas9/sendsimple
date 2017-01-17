@@ -2,10 +2,12 @@
 
 namespace app\models;
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
+use yii\base\UserException;
 
 class Group extends \app\models\base\Group
 {
@@ -26,6 +28,20 @@ class Group extends \app\models\base\Group
             TimestampBehavior::className(),
             BlameableBehavior::className(),
         ];
+    }
+
+    public function beforeDelete()
+    {
+        $existBase = Base::find()
+            ->where([
+                'group_id'=>$this->id
+            ])
+            ->exists();
+        if($existBase){
+            throw new UserException('Record can not be deleted, there are active client base');
+        }
+
+        return parent::beforeDelete();
     }
 
 
@@ -88,6 +104,13 @@ class Group extends \app\models\base\Group
                 'name' => 'Text',
                 'site' => 'Text',
                 'color_class' => 'Color',
+                'account_id' => [
+                    'type'=>'Select',
+                    'data'=> ArrayHelper::map(Account::find()->all(),'id','from_email'),
+                    'options' => [
+                        'prompt'=>'',
+                    ]
+                ],
             ]
         ];
 

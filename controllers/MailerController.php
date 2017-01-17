@@ -46,9 +46,14 @@ class MailerController extends AdminController
         $mailer = Yii::$app->mailer;
         $mailer->setTransport($transport);
 
-        $result = $mailer
-            ->compose()
-            ->setTo('nikalas9h4dfh5f@ya.ru')
+        $message = $mailer->compose();
+        $header = $message->getSwiftMessage()->getHeaders();
+        $header->addTextHeader('List-Unsubscribe', '<' . 'https://www.google.com.ua/' . '>');
+        $msgId = $header->get('Message-ID');
+        //echo $msgId;
+
+        $result = $message
+            ->setTo('nikalas9@ya.ru')
             ->setFrom([$account['from_email'] => $account['from_name']])
             ->setSubject($model->name)
             ->setHtmlBody($content)
