@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fdecb3e5629c6ccf900ebcd6be55ece",
-    "content-hash": "1d3d5544e4a49fc3c261064a5e1e26c5",
+    "hash": "ccedb11490da67b15e83e7889499ca0c",
+    "content-hash": "2a317a5710ab79522d8a33b246d7c697",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -323,6 +323,139 @@
                 "markdown-extra"
             ],
             "time": "2015-03-06 05:28:07"
+        },
+        {
+            "name": "crazy-max/cws-debug",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazy-max/CwsDebug.git",
+                "reference": "383dc02c63c1aad50cd6dfc8e0f4e73e868ebb49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazy-max/CwsDebug/zipball/383dc02c63c1aad50cd6dfc8e0f4e73e868ebb49",
+                "reference": "383dc02c63c1aad50cd6dfc8e0f4e73e868ebb49",
+                "shasum": ""
+            },
+            "require": {
+                "crazy-max/cws-dump": ">=1.8",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cws": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "crazy-max",
+                    "homepage": "http://www.crazyws.fr/"
+                }
+            ],
+            "description": "PHP class to output additional messages for debug.",
+            "homepage": "https://github.com/crazy-max/CwsDebug",
+            "keywords": [
+                "debug",
+                "log",
+                "print"
+            ],
+            "time": "2016-11-28 01:21:25"
+        },
+        {
+            "name": "crazy-max/cws-dump",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazy-max/CwsDump.git",
+                "reference": "b2dd7f46d56d024375e010904fdde0bdc784a024"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazy-max/CwsDump/zipball/b2dd7f46d56d024375e010904fdde0bdc784a024",
+                "reference": "b2dd7f46d56d024375e010904fdde0bdc784a024",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cws": "lib/"
+                },
+                "files": [
+                    "lib/Cws/CwsDumpHelper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "crazy-max",
+                    "homepage": "http://www.crazyws.fr/"
+                }
+            ],
+            "description": "PHP class to replace var_dump(), print_r() based on the Xdebug style.",
+            "homepage": "https://github.com/crazy-max/CwsDump",
+            "keywords": [
+                "Xdebug",
+                "dump",
+                "print_r",
+                "var_dump"
+            ],
+            "time": "2016-11-28 00:44:40"
+        },
+        {
+            "name": "crazy-max/cws-mail-bounce-handler",
+            "version": "1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazy-max/CwsMailBounceHandler.git",
+                "reference": "1c94af31bf93f2269362ad2dc5bb96756e56e111"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazy-max/CwsMailBounceHandler/zipball/1c94af31bf93f2269362ad2dc5bb96756e56e111",
+                "reference": "1c94af31bf93f2269362ad2dc5bb96756e56e111",
+                "shasum": ""
+            },
+            "require": {
+                "crazy-max/cws-debug": ">=1.10",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cws": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "crazy-max",
+                    "homepage": "http://www.crazyws.fr/"
+                }
+            ],
+            "description": "PHP class to help webmasters handle bounce-back, feedback loop and ARF mails in standard DSN (Delivery Status Notification, RFC-1894).",
+            "homepage": "https://github.com/crazy-max/CwsMailBounceHandler",
+            "keywords": [
+                "arf",
+                "bounce",
+                "dsn",
+                "mail"
+            ],
+            "time": "2016-12-07 22:14:44"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -1382,7 +1515,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "roopz/yii2-imap": 20
     },

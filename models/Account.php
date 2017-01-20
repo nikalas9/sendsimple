@@ -17,7 +17,7 @@ class Account extends \app\models\base\Account
         return [
             [['sort', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['from_name', 'from_email'], 'required'],
-            [['from_name', 'from_email', 'smtp_host', 'smtp_port', 'smtp_username', 'smtp_password'], 'string', 'max' => 100],
+            [['from_name', 'from_email', 'smtp_host', 'smtp_port', 'smtp_username', 'smtp_password', 'imap_path', 'imap_username', 'imap_password'], 'string', 'max' => 100],
         ];
     }
 
@@ -78,6 +78,9 @@ class Account extends \app\models\base\Account
                 'smtp_port' => 'Text',
                 'smtp_username' => 'Text',
                 'smtp_password' => 'Text',
+                'imap_path' => 'Text',
+                'imap_username' => 'Text',
+                'imap_password' => 'Text',
             ]
         ];
 

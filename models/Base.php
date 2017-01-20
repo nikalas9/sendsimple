@@ -89,10 +89,12 @@ class Base extends \app\models\base\Base
                     'attribute'=>'group_id',
                     'filter'=> ArrayHelper::map(Group::find()->all(),'id','name'),
                     'value'=> function($model){
-                        return Html::a($model->group->name,
-                            Url::toRoute(['base/index','BaseSearch[group_id]'=>$model->group->id]),
-                            ['class'=>'label '.$model->group->color_class]
-                        );
+                        if($model->group){
+                            return Html::a($model->group->name,
+                                Url::toRoute(['base/index','BaseSearch[group_id]'=>$model->group->id]),
+                                ['class'=>'label '.$model->group->color_class]
+                            );
+                        }
                     },
                     'format'=>'raw',
                 ],

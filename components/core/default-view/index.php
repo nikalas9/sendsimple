@@ -21,6 +21,16 @@ $option = $searchModel->optionIndex($searchModel);
 
         <h2 class="lte-hide-title"><?= Html::encode($this->title) ?></h2>
 
+        <?php if(Yii::$app->session->hasFlash('error')):?>
+            <div class="alert alert-danger fade in">
+                <button data-dismiss="alert" class="close">
+                    ×
+                </button>
+                <i class="fa-fw fa fa-times"></i>
+                <strong>Error!</strong> <?=Yii::$app->session->getFlash('error');?>
+            </div>
+        <?php endif;?>
+
         <div class="panel panel-default">
             <div class="panel-body">
 

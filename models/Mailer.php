@@ -19,7 +19,7 @@ class Mailer extends \app\models\base\Mailer
         return [
             [['account_id'], 'integer'],
             [['base_ids', 'account_id', 'name'], 'required'],
-            [['body', 'files'], 'string'],
+            [['body', 'temp_id', 'files'], 'string'],
             [['name'], 'string', 'max' => 255],
         ];
     }

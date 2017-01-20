@@ -15,7 +15,7 @@ class Select2 extends BaseWidget{
         $options = $this->options;
 
         if(isset($this->options['multiple']) and $this->options['multiple']){
-            if(strpos($model->$attribute,',')){
+            if(!is_array($model->$attribute) and strpos($model->$attribute,',')){
                 $model->$attribute = explode(',',$model->$attribute);
             }
         }
