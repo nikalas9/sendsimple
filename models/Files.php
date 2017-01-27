@@ -19,7 +19,7 @@ class Files extends \app\models\base\Files
             [['name'], 'string', 'max' => 255],
 
             ['file', 'required', 'on'=>'create'],
-            ['file', 'file', 'extensions'=>['xls','xlsx']],
+            //['file', 'file', 'extensions'=>['xls','xlsx']],
 
             ['base_id', 'required', 'on'=>'update'],
             ['column', 'validateColumn', 'on'=>'update'],
@@ -44,6 +44,11 @@ class Files extends \app\models\base\Files
             TimestampBehavior::className(),
             BlameableBehavior::className(),
         ];
+    }
+
+    public static function find()
+    {
+        return new BaseQuery(get_called_class());
     }
 
     // admin option ----------------------------------------------------------------------------------------------------

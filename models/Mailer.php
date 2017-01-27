@@ -3,6 +3,7 @@
 namespace app\models;
 
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -17,7 +18,7 @@ class Mailer extends \app\models\base\Mailer
     public function rules()
     {
         return [
-            [['account_id'], 'integer'],
+            [['group_id', 'account_id'], 'integer'],
             [['base_ids', 'account_id', 'name'], 'required'],
             [['body', 'temp_id', 'files'], 'string'],
             [['name'], 'string', 'max' => 255],
@@ -31,6 +32,54 @@ class Mailer extends \app\models\base\Mailer
         }
         return parent::load($data, $formName);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountStack()
+    {
+        return $this->hasOne(MailerData::className(), [
+            'mailer_id' => 'id',
+        ])
+            ->select('mailer_id, count(*) as value');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountSend()
+    {
+        return $this->hasOne(MailerData::className(), [
+            'mailer_id' => 'id',
+        ])
+            ->andWhere('send is not null')
+            ->select('mailer_id, count(*) as value');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountDeliver()
+    {
+        return $this->hasOne(MailerData::className(), [
+            'mailer_id' => 'id',
+        ])
+            ->andWhere('deliver is not null')
+            ->select('mailer_id, count(*) as value');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountOpen()
+    {
+        return $this->hasOne(MailerData::className(), [
+            'mailer_id' => 'id',
+        ])
+            ->andWhere('open is not null')
+            ->select('id, count(*) as value');
+    }
+
 
     /*public function behaviors()
     {
@@ -61,13 +110,79 @@ class Mailer extends \app\models\base\Mailer
                     'attribute'=>'id',
                 ],
                 [
-                    'class' => \core\components\gridColumns\StatusColumn::className(),
                     'attribute'=>'status',
-                    'toggleUrl'=>Url::to(['toggle-attribute', 'attribute'=>'status', 'id'=>'_id_']),
+                    'value' => function($model){
+                        $status = array(
+                            0 => 'Draft',
+                            1 => 'Queued',
+                            2 => 'Distribution',
+                            3 => 'Finish',
+                            4 => 'Cancel',
+                            5 => 'Pause',
+                            10 => 'Error',
+                            -1 => 'Delete',
+                        );
+                        $label = 'default';
+                        switch($model->status) {
+                            case '0':  $label = 'default'; break;
+                            case '1':  $label = 'warning'; break;
+                            case '2':  $label = 'warning'; break;
+                            case '3':  $label = 'success'; break;
+                            case '4':  $label = 'default'; break;
+                            case '5':  $label = 'info'; break;
+                            case '10':  $label = 'error'; break;
+                        }
+                        return '<span style="font-size:85%;" class="label label-'.$label.'">'.$status[$model->status].'</span>';
+                    },
+                    'format' => 'html',
+                    'contentOptions' => [
+                        'style'=>'text-align:center; width:80px; white-space:nowrap;'
+                    ],
                 ],
                 [
                     'class' => \core\components\gridColumns\NameColumn::className(),
                 ],
+                /*[
+                    'label' => 'Stack',
+                    'value'=> function($model){
+                        return $model->countStack ? $model->countStack->value : '';
+                    }
+                ],
+                [
+                    'label' => 'Send',
+                    'value'=> function($model){
+                        return $model->countSend ? $model->countSend->value : '';
+                    }
+                ],
+                [
+                    'label' => 'Deliver',
+                    'value'=> function($model){
+                        return $model->countDeliver ? $model->countDeliver->value : '';
+                    }
+                ],
+                [
+                    'label' => 'Open',
+                    'value'=> function($model){
+                        return $model->countOpen ? $model->countOpen->value : '';
+                    }
+                ],
+                [
+                    'header' => 'Detail',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        if($model->countStack){
+                            return Html::a('<i class="glyphicon glyphicon-folder-open"></i>',
+                                ['mailer-data/index', 'MailerDataSearch[mailer_id]' => $model->id],
+                                ['class'=>'btn btn-info btn-xs','data-pjax'=>0]);
+                        } else {
+                            return Html::a('<i class="glyphicon glyphicon-folder-open"></i>',
+                                ['mailer-data/index', 'MailerDataSearch[mailer_id]' => $model->id],
+                                ['class'=>'btn btn-info btn-xs','data-pjax'=>0]);
+                        }
+                    },
+                    'filter'=>false,
+                    'contentOptions'=>['style'=>'width:80px; text-align:center;'],
+                ],*/
                 [
                     'class' => 'yii\grid\CheckboxColumn',
                     'options'=>['style'=>'width:10px']
@@ -87,16 +202,15 @@ class Mailer extends \app\models\base\Mailer
         $base = Base::find()->with(['group'])->all();
         $baseData = ArrayHelper::map($base,'id','name','group.name');
 
-        $account = Account::find()->all();
-        $accountData = [];
-        if($account){
-            foreach($account as $row){
-                $accountData[ $row['id'] ] = $row['from_email'].' ('.$row['from_name'].')';
-            }
-        }
-
         $option = [
             'items' => [
+                'group_id' => [
+                    'type' =>'Select',
+                    'data'=>Group::getDropDownList(),
+                    'options' => [
+                        'prompt' => ''
+                    ]
+                ],
                 'base_ids'=>[
                     'type'=>'Select2',
                     'data'=>$baseData,
@@ -106,7 +220,7 @@ class Mailer extends \app\models\base\Mailer
                 ],
                 'account_id' => [
                     'type'=>'Select',
-                    'data'=>$accountData,
+                    'data'=>Account::getDropDownList(),
                 ],
                 'name' => 'Text',
                 'body' => 'Builder',

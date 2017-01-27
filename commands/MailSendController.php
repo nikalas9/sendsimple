@@ -36,8 +36,7 @@ class MailSendController extends Controller
                             $model = new MailerData();
                             $model->status = 0;
                             $model->client_id = $client->id;
-                            $uClientEmail = str_replace('@', '+'.uniqid().'@', $client->email);
-                            $model->client_email = $uClientEmail;
+                            $model->client_email = $client->email;
                             $model->base_id = $baseIds[0];
                             $model->mailer_id = $mailer->id;
                             $model->lang_id = $mailer->lang_id;

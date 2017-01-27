@@ -52,11 +52,7 @@ class ClientsSearch extends Clients
             ],
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+        if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 
@@ -68,8 +64,18 @@ class ClientsSearch extends Clients
             'city_id' => $this->city_id,
         ]);
 
-        $query->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'other', $this->other]);
+        $query->andFilterWhere(['like', 'email', $this->email]);
+
+        if($this->other){
+            foreach($this->other as $alias => $value){
+                if($value){
+                    $value = strip_tags($value);
+                    $value = htmlspecialchars($value);
+                    $value = mysql_escape_string($value);
+                    $query->andWhere('other REGEXP \'"'.$alias.'":"([^"]*)'.$value.'([^"]*)"\'');
+                }
+            }
+        }
 
         if ($this->created_at != null) {
             $timeFrom = strtotime(substr($this->created_at, 0, 10).' 00:00:00');

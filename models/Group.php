@@ -3,10 +3,12 @@
 namespace app\models;
 
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
+use core\behaviors\MaxOrderBehavior;
 use yii\base\UserException;
 
 class Group extends \app\models\base\Group
@@ -22,11 +24,20 @@ class Group extends \app\models\base\Group
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBaseExists()
+    {
+        return $this->hasOne(Base::className(), ['group_id' => 'id']);
+    }
+
     public function behaviors()
     {
         return [
             TimestampBehavior::className(),
             BlameableBehavior::className(),
+            MaxOrderBehavior::className(),
         ];
     }
 
@@ -44,7 +55,15 @@ class Group extends \app\models\base\Group
         return parent::beforeDelete();
     }
 
+    public static function getDropDownList()
+    {
+        return ArrayHelper::map(Group::find()->active()->all(),'id','name');
+    }
 
+    public static function find()
+    {
+        return new BaseQuery(get_called_class());
+    }
 
     // admin option ----------------------------------------------------------------------------------------------------
 
@@ -84,6 +103,23 @@ class Group extends \app\models\base\Group
                 ],
                 'site',
                 [
+                    'header' => 'Base',
+                    'format' => 'raw',
+                    'value' => function ($model) {
+                        if(isset($model->baseExists)){
+                            return Html::a('<i class="glyphicon glyphicon-folder-open"></i>',
+                                ['base/index', 'BaseSearch[group_id]' => $model->id],
+                                ['class'=>'btn btn-info btn-xs','data-pjax'=>0]);
+                        } else {
+                            return Html::a('<i class="glyphicon glyphicon-folder-close"></i>',
+                                ['base/index', 'BaseSearch[group_id]' => $model->id],
+                                ['class'=>'btn btn-info btn-xs','data-pjax'=>0]);
+                        }
+                    },
+                    'filter'=>false,
+                    'contentOptions'=>['style'=>'width:80px; text-align:center;'],
+                ],
+                [
                     'class' => 'yii\grid\CheckboxColumn',
                     'options'=>['style'=>'width:10px']
                 ],
@@ -106,7 +142,7 @@ class Group extends \app\models\base\Group
                 'color_class' => 'Color',
                 'account_id' => [
                     'type'=>'Select',
-                    'data'=> ArrayHelper::map(Account::find()->all(),'id','from_email'),
+                    'data'=>Account::getDropDownList(),
                     'options' => [
                         'prompt'=>'',
                     ]

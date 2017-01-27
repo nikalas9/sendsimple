@@ -43,6 +43,8 @@ class MailerSearch extends Mailer
     {
         $query = Mailer::find();
 
+        //$query->with(['countStack','countSend','countDeliver','countOpen']);
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -52,11 +54,7 @@ class MailerSearch extends Mailer
             ],
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+        if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 

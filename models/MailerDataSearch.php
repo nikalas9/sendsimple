@@ -5,23 +5,22 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Files;
 
 /**
- * FilesSearch represents the model behind the search form about `app\models\Files`.
+ * LangSearch represents the model behind the search form about `app\models\Group`.
  */
-class FilesSearch extends Files
+class MailerDataSearch extends MailerData
 {
     /**
      * @inheritdoc
      */
-    public function rules()
+    /*public function rules()
     {
         return [
-            [['id', 'status', 'date_upload', 'iBook', 'iHeader', 'base_id', 'state'], 'integer'],
-            [['name', 'file', 'column'], 'safe'],
+            [['id', 'sort', 'status'], 'integer'],
+            [['name', 'main'], 'safe'],
         ];
-    }
+    }*/
 
     /**
      * @inheritdoc
@@ -41,7 +40,7 @@ class FilesSearch extends Files
      */
     public function search($params)
     {
-        $query = Files::find();
+        $query = MailerData::find();
 
         // add conditions that should always apply here
 
@@ -60,19 +59,16 @@ class FilesSearch extends Files
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
+        /*$query->andFilterWhere([
             'id' => $this->id,
+            'sort' => $this->sort,
             'status' => $this->status,
-            'iBook' => $this->iBook,
-            'iHeader' => $this->iHeader,
-            'base_id' => $this->base_id,
-            'state' => $this->state,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'file', $this->file])
-            ->andFilterWhere(['like', 'column', $this->column]);
+        $query->andFilterWhere(['like', 'name', $this->name]);*/
 
         return $dataProvider;
     }
+
+
 }

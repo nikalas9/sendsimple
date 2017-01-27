@@ -19,6 +19,7 @@ return array(
     'roopz\\imap\\' => array($vendorDir . '/roopz/yii2-imap/src'),
     'mihaildev\\elfinder\\' => array($vendorDir . '/mihaildev/yii2-elfinder'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
+    'c006\\utility\\migration\\' => array($vendorDir . '/c006/yii2-migration-utility'),
     'amnah\\yii2\\user\\' => array($vendorDir . '/amnah/yii2-user'),
     'TijsVerkoyen\\CssToInlineStyles\\' => array($vendorDir . '/tijsverkoyen/css-to-inline-styles/src'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),

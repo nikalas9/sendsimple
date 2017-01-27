@@ -74,7 +74,7 @@ yii\bootstrap\Modal::begin([
     'footer' => '<button onclick="$(\'#modalMd\').modal(\'hide\');" class="btn btn-default" type="button">Cancel</button>
         '. Html::a('Save', '#', [
             'class' => 'btn btn-primary',
-            'onclick' => "$('#modalMd').find('form').submit()",
+            'onclick' => "$('#modalMd').find('form').submit(); return false;",
         ])
 ]);
 echo '<div id="modalMdContent"></div>';

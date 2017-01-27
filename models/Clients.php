@@ -3,6 +3,7 @@
 namespace app\models;
 
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -91,15 +92,18 @@ class Clients extends \app\models\base\Clients
         return $arr[$key];
     }
 
-    public function optionIndex()
+    public function optionIndex($model)
     {
         $other = ClientsParam::find()->all();
         $otherColumnAttributes = [];
         foreach($other as $row){
             $otherColumnAttributes[] = [
-                'label'=>$row['name'],
-                'attribute'=>'other.'.$row['alias'],
-                'value'=>function($data) use ($row){
+                'label' => $row['name'],
+                'filter' => Html::activeTextInput($model, 'other['.$row['alias'].']', [
+                    'class' => 'form-control',
+                    'id' => null
+                ]),
+                'value' => function($data) use ($row){
                     $other = json_decode($data->other,1);
                     return isset($other[$row['alias']]) ? $other[$row['alias']] : false;
                 }
@@ -153,7 +157,7 @@ class Clients extends \app\models\base\Clients
             'items' => [
                 'baseIds'=>[
                     'type'=>'Select2',
-                    'data'=>ArrayHelper::map(Base::find()->with(['group'])->all(),'id','name','group.name'),
+                    'data'=>ArrayHelper::map(Base::find()->with(['group'])->active()->all(),'id','name','group.name'),
                     'options'=>[
                         'multiple'=>true
                     ]
@@ -166,13 +170,17 @@ class Clients extends \app\models\base\Clients
         if($other){
             foreach($other as $item){
                 $option['items']['other['.$item->alias.']'] = [
-                    'type'=>'Text',
-                    'label'=>$item->name
+                    'type' => ucfirst($item->type_id),
+                    'label' => $item->name
                 ];
             }
         }
 
-        $this->baseIds = ArrayHelper::getColumn(ClientsBase::find()->andWhere(['client_id'=>$this->id])->all(),'base_id');
+        $this->baseIds = ArrayHelper::getColumn(ClientsBase::find()
+            ->andWhere([
+                'client_id'=>$this->id
+            ])
+            ->all(),'base_id');
         $this->other = json_decode($this->other,1);
 
         return $option;

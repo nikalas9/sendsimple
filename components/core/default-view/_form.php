@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use core\components\ActiveForm;
 
-$fields = $model->optionUpdate();
+$fields = $model->optionUpdate($model);
 ?>
 
 <div class="row">

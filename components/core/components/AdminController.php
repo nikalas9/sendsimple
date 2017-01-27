@@ -33,7 +33,7 @@ class AdminController extends BaseController
     /**
      * @var string
      */
-    public $actionAfterCreate = 'index';
+    public $actionAfterCreate = 'view';
 
     /**
      * @var string

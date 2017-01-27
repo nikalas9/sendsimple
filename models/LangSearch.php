@@ -5,12 +5,11 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Group;
 
 /**
- * GroupSearch represents the model behind the search form about `app\models\Group`.
+ * LangSearch represents the model behind the search form about `app\models\Group`.
  */
-class GroupSearch extends Group
+class LangSearch extends Lang
 {
     /**
      * @inheritdoc
@@ -18,8 +17,8 @@ class GroupSearch extends Group
     public function rules()
     {
         return [
-            [['id', 'sort', 'status', 'account_id'], 'integer'],
-            [['name', 'site', 'domain', 'color_class', 'created_at'], 'safe'],
+            [['id', 'sort', 'status'], 'integer'],
+            [['name', 'main'], 'safe'],
         ];
     }
 
@@ -41,9 +40,7 @@ class GroupSearch extends Group
      */
     public function search($params)
     {
-        $query = Group::find();
-
-        $query->with(['baseExists']);
+        $query = Lang::find();
 
         // add conditions that should always apply here
 
@@ -66,23 +63,9 @@ class GroupSearch extends Group
             'id' => $this->id,
             'sort' => $this->sort,
             'status' => $this->status,
-            'account_id' => $this->account_id,
-            //'created_at' => $this->created_at,
-            //'updated_at' => $this->updated_at,
-            //'created_by' => $this->created_by,
-            //'updated_by' => $this->updated_by,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'site', $this->site])
-            ->andFilterWhere(['like', 'domain', $this->domain])
-            ->andFilterWhere(['like', 'color_class', $this->color_class]);
-
-        if ($this->created_at != null) {
-            $timeFrom = strtotime(substr($this->created_at, 0, 10).' 00:00:00');
-            $timeTo = strtotime(substr($this->created_at, 13, 10).' 23:59:59');
-            $query->andFilterWhere(['between', Group::tableName().'.created_at', $timeFrom, $timeTo]);
-        }
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

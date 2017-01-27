@@ -37,6 +37,7 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
+            'c006\\utility\\migration\\' => 23,
         ),
         'a' => 
         array (
@@ -108,6 +109,10 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'c006\\utility\\migration\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/c006/yii2-migration-utility',
         ),
         'amnah\\yii2\\user\\' => 
         array (

@@ -102,4 +102,13 @@ return array (
       '@roopz/imap' => $vendorDir . '/roopz/yii2-imap/src',
     ),
   ),
+  'c006/yii2-migration-utility' => 
+  array (
+    'name' => 'c006/yii2-migration-utility',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@c006/utility/migration' => $vendorDir . '/c006/yii2-migration-utility',
+    ),
+  ),
 );

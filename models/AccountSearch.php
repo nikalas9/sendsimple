@@ -55,11 +55,7 @@ class AccountSearch extends Account
             ],
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+        if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
 
@@ -68,18 +64,11 @@ class AccountSearch extends Account
             'id' => $this->id,
             'sort' => $this->sort,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
         ]);
 
         $query->andFilterWhere(['like', 'from_name', $this->from_name])
             ->andFilterWhere(['like', 'from_email', $this->from_email])
-            ->andFilterWhere(['like', 'smtp_host', $this->smtp_host])
-            ->andFilterWhere(['like', 'smtp_port', $this->smtp_port])
-            ->andFilterWhere(['like', 'smtp_username', $this->smtp_username])
-            ->andFilterWhere(['like', 'smtp_password', $this->smtp_password]);
+            ->andFilterWhere(['like', 'smtp_host', $this->smtp_host]);
 
         return $dataProvider;
     }

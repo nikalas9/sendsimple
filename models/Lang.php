@@ -2,26 +2,15 @@
 
 namespace app\models;
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
 use core\behaviors\MaxOrderBehavior;
 
-class Account extends \app\models\base\Account
+class Lang extends \app\models\base\Lang
 {
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['sort', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['from_name', 'from_email'], 'required'],
-            [['from_name', 'from_email', 'smtp_host', 'smtp_port', 'smtp_username', 'smtp_password', 'smtp_encryption', 'imap_host', 'imap_port', 'imap_username', 'imap_password', 'imap_encryption'], 'string', 'max' => 100],
-        ];
-    }
-
     public function behaviors()
     {
         return [
@@ -33,14 +22,16 @@ class Account extends \app\models\base\Account
 
     public static function getDropDownList()
     {
-        $account = Account::find()->active()->all();
-        $accountData = [];
-        if($account){
-            foreach($account as $row){
-                $accountData[ $row['id'] ] = $row['from_email'].' ('.$row['from_name'].')';
-            }
+        return ArrayHelper::map(Lang::find()->active()->all(),'id','name');
+    }
+
+    public static function getMainLangId()
+    {
+        if($lang_main = Lang::find()
+            ->where('main = 1')
+            ->one()){
+            return $lang_main->id;
         }
-        return $accountData;
     }
 
     public static function find()
@@ -48,15 +39,14 @@ class Account extends \app\models\base\Account
         return new BaseQuery(get_called_class());
     }
 
-
     // admin option ----------------------------------------------------------------------------------------------------
 
     public static function label($key)
     {
         $arr = [
-            'list'=>'Account',
-            'action'=>'Account',
-            'model'=>'Account',
+            'list'=>'Lang',
+            'action'=>'Lang',
+            'model'=>'Lang',
         ];
         return $arr[$key];
     }
@@ -70,16 +60,28 @@ class Account extends \app\models\base\Account
                     'attribute'=>'id',
                 ],
                 [
+                    'class' => \core\components\gridColumns\SortColumn::className(),
+                ],
+                [
                     'class' => \core\components\gridColumns\StatusColumn::className(),
                     'attribute'=>'status',
                     'toggleUrl'=>Url::to(['toggle-attribute', 'attribute'=>'status', 'id'=>'_id_']),
                 ],
                 [
                     'class' => \core\components\gridColumns\NameColumn::className(),
-                    'attribute'=>'from_email',
                 ],
-                'from_name',
-                'smtp_host',
+                [
+                    'class' => \core\components\gridColumns\CheckColumn::className(),
+                    'attribute'=>'main',
+                    'filter'=>false,
+                ],
+                [
+                    'class' => 'yii\grid\CheckboxColumn',
+                    'options'=>['style'=>'width:10px']
+                ],
+                [
+                    'class' => \core\components\ActionColumn::className(),
+                ],
             ]
         ];
 
@@ -91,18 +93,8 @@ class Account extends \app\models\base\Account
     {
         $option = [
             'items' => [
-                'from_email' => 'Text',
-                'from_name' => 'Text',
-                'smtp_host' => 'Text',
-                'smtp_port' => 'Text',
-                'smtp_username' => 'Text',
-                'smtp_password' => 'Text',
-                'smtp_encryption' => 'Text',
-                'imap_host' => 'Text',
-                'imap_port' => 'Text',
-                'imap_username' => 'Text',
-                'imap_password' => 'Text',
-                'imap_encryption' => 'Text',
+                'name' => 'Text',
+                'main' => 'Checkbox',
             ]
         ];
 
@@ -116,11 +108,10 @@ class Account extends \app\models\base\Account
             'items' => [
                 'id',
                 'status',
-                'from_email',
-                'from_name',
+                'name',
+                'main',
             ]
         ];
-
         return $option;
     }
 }

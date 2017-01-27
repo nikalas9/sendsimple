@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ccedb11490da67b15e83e7889499ca0c",
-    "content-hash": "2a317a5710ab79522d8a33b246d7c697",
+    "hash": "0f7e84c8ab7a339dcfcbfa173865f819",
+    "content-hash": "8ff28a42af69adc73770f226bda0de37",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -263,6 +263,45 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "c006/yii2-migration-utility",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/c006/yii2-migration-utility.git",
+                "reference": "a7455e7405f5914ce62f4f550718c9b61b1c5048"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/c006/yii2-migration-utility/zipball/a7455e7405f5914ce62f4f550718c9b61b1c5048",
+                "reference": "a7455e7405f5914ce62f4f550718c9b61b1c5048",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "c006\\utility\\migration\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Chambers",
+                    "email": "jchambers.dev@gmail.com"
+                }
+            ],
+            "description": "Automatically writes the create tables for migrations or create tables in general",
+            "keywords": [
+                "extension",
+                "migration",
+                "tables",
+                "yii2"
+            ],
+            "time": "2016-11-01 04:58:36"
         },
         {
             "name": "cebe/markdown",
@@ -1364,6 +1403,7 @@
                 "codeception",
                 "yii2"
             ],
+            "abandoned": "codeception/codeception",
             "time": "2016-03-17 03:41:26"
         },
         {
@@ -1517,7 +1557,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "roopz/yii2-imap": 20
+        "roopz/yii2-imap": 20,
+        "c006/yii2-migration-utility": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

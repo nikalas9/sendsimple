@@ -8,6 +8,7 @@ use yii\helpers\Html;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\behaviors\BlameableBehavior;
+use core\behaviors\MaxOrderBehavior;
 
 class Base extends \app\models\base\Base
 {
@@ -38,12 +39,26 @@ class Base extends \app\models\base\Base
         return $this->hasOne(Group::className(), ['id' => 'group_id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLang()
+    {
+        return $this->hasOne(Lang::className(), ['id' => 'lang_id']);
+    }
+
     public function behaviors()
     {
         return [
             TimestampBehavior::className(),
             BlameableBehavior::className(),
+            MaxOrderBehavior::className(),
         ];
+    }
+
+    public static function find()
+    {
+        return new BaseQuery(get_called_class());
     }
 
     // admin option ----------------------------------------------------------------------------------------------------
@@ -99,6 +114,13 @@ class Base extends \app\models\base\Base
                     'format'=>'raw',
                 ],
                 [
+                    'attribute'=>'lang_id',
+                    'filter'=> ArrayHelper::map(Lang::find()->all(),'id','name'),
+                    'value'=> function($model){
+                        return $model->lang ? $model->lang->name : '';
+                    },
+                ],
+                [
                     'class' => 'yii\grid\CheckboxColumn',
                     'options'=>['style'=>'width:10px']
                 ],
@@ -112,15 +134,26 @@ class Base extends \app\models\base\Base
     }
 
 
-    public function optionUpdate()
+    public function optionUpdate($model)
     {
+        if($model->isNewRecord){
+            $model->lang_id = Lang::getMainLangId();
+        }
+
         $option = [
             'items' => [
                 'group_id' => [
-                    'type'=>'Select',
-                    'data'=> ArrayHelper::map(Group::find()->all(),'id','name')
+                    'type' =>'Select',
+                    'data' => Group::getDropDownList(),
+                    'options' => [
+                        'prompt' => ''
+                    ]
                 ],
                 'name' => 'Text',
+                'lang_id' => [
+                    'type'=>'Select',
+                    'data'=> Lang::getDropDownList(),
+                ],
             ]
         ];
 

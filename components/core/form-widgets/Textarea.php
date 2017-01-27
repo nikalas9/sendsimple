@@ -13,6 +13,10 @@ class Textarea extends BaseWidget{
         $options = ['rows' => 4];
         $this->options = array_merge($options,$this->options);
 
+        if(isset($this->params['label'])){
+            $label = $this->params['label'];
+            return $form->field($model, $attribute, $this->fieldOptions)->textArea($this->options)->label($label);
+        }
 
         $model->$attribute = str_replace('<br/>',"\n",$model->$attribute);
 
