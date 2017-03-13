@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0f7e84c8ab7a339dcfcbfa173865f819",
-    "content-hash": "8ff28a42af69adc73770f226bda0de37",
+    "hash": "010d1f6e7bfd96528047005680096367",
+    "content-hash": "1d23203962eb3b5b3b52bc5aba8d84c1",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -50,6 +50,55 @@
                 "yii2"
             ],
             "time": "2016-02-28 04:38:35"
+        },
+        {
+            "name": "axllent/simplehtmldom",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axllent/simplehtmldom.git",
+                "reference": "42d10e5b571691887f9ea190f8451bdef40e83ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axllent/simplehtmldom/zipball/42d10e5b571691887f9ea190f8451bdef40e83ba",
+                "reference": "42d10e5b571691887f9ea190f8451bdef40e83ba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SimpleHtmlDom": "src/"
+                },
+                "files": [
+                    "src/simple_html_dom.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "The MIT License (MIT)"
+            ],
+            "authors": [
+                {
+                    "name": "S.C. Chen",
+                    "email": "me578022@gmail.com"
+                },
+                {
+                    "name": "Ralph Slooten",
+                    "email": "axllent@gmail.com"
+                }
+            ],
+            "description": "PHP Simple HTML DOM Parser with namespace & bug fixes",
+            "homepage": "http://simplehtmldom.sourceforge.net/",
+            "keywords": [
+                "Simple",
+                "dom",
+                "html"
+            ],
+            "time": "2016-11-04 02:18:38"
         },
         {
             "name": "bower-asset/bootstrap",

@@ -36,6 +36,14 @@ class Mailer extends \app\models\base\Mailer
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getGroup()
+    {
+        return $this->hasOne(Group::className(), ['id' => 'group_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getCountStack()
     {
         return $this->hasOne(MailerData::className(), [

@@ -4,7 +4,6 @@ namespace app\controllers;
 use core\components\BaseController;
 use Yii;
 
-
 class LetterController extends BaseController
 {
 
@@ -13,10 +12,11 @@ class LetterController extends BaseController
         $content = '';
         $style = '';
 
-        if($body = Yii::$app->session[$key]){
+        if($html = Yii::$app->session[$key]){
 
-            include("../components/simple_html_dom.php");
-            $dom = str_get_html($body);
+            //include("../components/simple_html_dom.php");
+            //$dom = str_get_html($body);
+            $dom = \SimpleHtmlDom\str_get_html($html);
 
             $style = $dom->find('#container',0)->getAttribute('style');
 

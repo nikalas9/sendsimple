@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\base\TmpLink;
 use yii\helpers\Url;
 use Yii;
 
@@ -9,9 +10,26 @@ class MailerData extends \app\models\base\MailerData
 {
     public $value;
 
-    function senderMail($model)
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getClient()
     {
-        $result = $this->send($model);
+        return $this->hasOne(\app\models\Clients::className(), ['id' => 'client_id']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if(parent::beforeSave($insert)){
+            if($this->isNewRecord){
+                $this->hash = uniqid();
+            }
+        }
+    }
+
+    function senderMail($mailer)
+    {
+        $result = $this->send($mailer);
         if($result){
             $this->send = time();
             $this->status = 1;
@@ -19,11 +37,11 @@ class MailerData extends \app\models\base\MailerData
         }
     }
 
-    function send($model)
+    function send($mailer)
     {
-        $account = $model->account;
+        $account = $mailer->account;
 
-        $mailer = Yii::$app->mailer;
+        $eMailer = Yii::$app->mailer;
         $transport = [
             'class' => 'Swift_SmtpTransport',
             'host' => $account['smtp_host'],
@@ -32,39 +50,83 @@ class MailerData extends \app\models\base\MailerData
             'port' => $account['smtp_port'],
             'encryption' => $account['smtp_encryption'],
         ];
-        $mailer->setTransport($transport);
+        $eMailer->setTransport($transport);
 
-        $message = $mailer->compose();
+        $message = $eMailer->compose();
         $header = $message->getSwiftMessage()->getHeaders();
         //$header->addTextHeader('List-Unsubscribe', '<' . 'https://www.google.com.ua/' . '>');
         $msgId = $header->get('Message-ID')->getId();
         $this->message_id = $msgId;
 
-        $content = $model->body;
-        $content = $this->filterMail($content);
-        $content = $this->convertMail($content);
+        $content = $mailer->body;
+        $content = $this->filterMail($content, $mailer);
+        $content = self::convertMail($content);
 
-        //$fromEmail = str_replace('@', '+'.$msgId.'@', $account['from_email']);
         $result = $message
             ->setTo($this->client_email)
             ->setFrom([$account['from_email'] => $account['from_name']])
-            ->setSubject($model->name)
+            ->setSubject($mailer->name)
             ->setHtmlBody($content)
             ->send();
         return $result;
     }
 
-    function filterMail($content)
+    function filterMail($content, $mailer)
     {
+        $matchs = array();
+        preg_match_all("#<a.*href=[\"'](.*)[\"'].*>(.*)</a>#isU", $content, $matchs, PREG_SET_ORDER);
+
+        // обработка переменных в письме
+        $template = new \app\components\Dextep();
+
+        $template->setVar('group.name', $mailer->group->name);
+        if($mailer->group->site){
+            $template->setVar('group.name', $mailer->group->site);
+        }
+
+        $template->setVar('contact.email', $this->client->email);
+        $other = array();
+        if($this->client->other){
+            $other = json_decode($this->client->other,1);
+        }
+        $clientsParam = ClientsParam::find()->active()->all();
+        if($clientsParam){
+            foreach($clientsParam as $row){
+                if(isset($other[$row->alias]) and $other[$row->alias]){
+                    $template->setVar('contact.'.$row->alias, $other[$row->alias]);
+                }
+            }
+        }
+
+        $webLink = Url::toRoute(['/browse/letter/view','id'=>$this->hash], 'http'); //Yii::$app->params['baseUrl']);
+        $template->setVar('link.web', $webLink);
+
+        $content = $template->getTemplate($content);
+
+        // добавляем картинку отслеживания
+        $imageLink = Url::toRoute(['/browse/letter/open','id'=>$this->hash], 'http'); //Yii::$app->params['baseUrl']);
+        $content .= '<img border="0" width="1" height="1" alt="" src="'.$imageLink.'">';
+
+        // заменяем настоящие ссылки
+        if($matchs){
+            foreach($matchs as $one){
+                if($one[1] and !strpos($one[1],'ailto:') and !strpos($one[1],'}')){
+                    $tempLink = new TmpLink();
+                    $tempLink->mailer_data_id = $this->id;
+                    $tempLink->link = htmlspecialchars_decode($one[1]); //чтобы повиксить возможные &amp;
+                    $tempLink->hash = uniqid();
+                    $tempLink->save(false);
+
+                    $newLink = Url::toRoute(['/browse/letter/redirect','id'=>$tempLink->hash], 'http'); //Yii::$app->params['baseUrl']);
+                    $content = str_replace('href="'.$one[1].'"','href="'.$newLink.'"',$content);
+                }
+            }
+        }
+
         return $content;
     }
 
-    function createBaseUrl($group,$r,$params){
-        /*$domain = Helper::getBaseUrl($group);
-        return $domain.'/index.php?r='.$r.'&'.http_build_query($params);*/
-    }
-
-    function convertMail($content, $clean = true){
+    static function convertMail($content, $clean = true){
 
         $cssToInlineStyles = new \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles();
 

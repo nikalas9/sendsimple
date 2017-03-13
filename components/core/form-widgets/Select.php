@@ -2,8 +2,6 @@
 
 namespace core\components\formWidgets;
 
-use yii\helpers\ArrayHelper;
-
 class Select extends BaseWidget{
 
     public function run() {
@@ -11,12 +9,6 @@ class Select extends BaseWidget{
         $form = $this->form;
         $model = $this->model;
         $attribute = $this->attribute;
-
-        //$modelClass = $this->modelClass;
-        //$list = ArrayHelper::map($modelClass::find()->all(),'id','name') ;
-
-        //$options = ['prompt' => ''];
-        //$this->options = array_merge($options,$this->options);
 
         if(isset($this->options['multiple']) and $this->options['multiple']){
             if(strpos($model->$attribute,',')){

@@ -174,7 +174,7 @@ class m170126_102314_mailer_base extends Migration
             'account_id' => $this->integer(),
             'lang_id' => $this->integer(),
             'name' => $this->string(),
-            'body' => $this->integer(),
+            'body' => $this->text(),
             'temp_id' => $this->string(100),
             'files' => $this->text(),
             'template_id' => $this->integer(),

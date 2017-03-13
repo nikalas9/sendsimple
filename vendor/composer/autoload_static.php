@@ -10,6 +10,7 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'f2d2f44c4a007ed5e7bb044890632360' => __DIR__ . '/..' . '/crazy-max/cws-dump/lib/Cws/CwsDumpHelper.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'dde36771ed587cc4660e8e19b51e0235' => __DIR__ . '/..' . '/axllent/simplehtmldom/src/simple_html_dom.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -133,6 +134,13 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'SimpleHtmlDom' => 
+            array (
+                0 => __DIR__ . '/..' . '/axllent/simplehtmldom/src',
+            ),
+        ),
         'P' => 
         array (
             'PHPExcel' => 

@@ -9,4 +9,5 @@ return array(
     '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     'f2d2f44c4a007ed5e7bb044890632360' => $vendorDir . '/crazy-max/cws-dump/lib/Cws/CwsDumpHelper.php',
     '2c102faa651ef8ea5874edb585946bce' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
+    'dde36771ed587cc4660e8e19b51e0235' => $vendorDir . '/axllent/simplehtmldom/src/simple_html_dom.php',
 );
