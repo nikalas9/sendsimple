@@ -4,7 +4,6 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
-$db = require(__DIR__ . '/db.php');
 
 $config = [
     'id' => 'app-sender',
@@ -118,8 +117,8 @@ $config = [
             'access' => ['@'], //глобальный доступ к фаил менеджеру @ - для авторизорованных , ? - для гостей , чтоб открыть всем ['@', '?']
             'disabledCommands' => ['netmount'], //отключение ненужных команд https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#commands
             'root' => [
-                'baseUrl'=>'http://sender/public',
-                'basePath'=>'public',
+                'baseUrl' => $params['baseUrl'] . '/public',
+                'basePath' => 'public',
                 'path'=>'',
             ],
         ]
