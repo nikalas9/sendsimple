@@ -12,7 +12,7 @@ class Builder extends BaseWidget{
         $model = $this->model;
         $attribute = $this->attribute;
 
-        if($model->isNewRecord){
+        if($model->temp_id == null){
             $model->temp_id = uniqid();
         }
         Yii::$app->session[$model->temp_id] = $model->$attribute;

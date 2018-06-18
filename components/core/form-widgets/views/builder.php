@@ -78,17 +78,23 @@ echo Html::activeHiddenInput($model,'body');
 echo Html::activeHiddenInput($model,'temp_id');
 ?>
 
-<p class="lead"><?= Yii::t('app','Edit template letters');?>
-    <?php
-    echo Html::a(Yii::t('app','Open designer'),
-        Url::toRoute(['letter/builder','key'=>$model->temp_id]),
-        array(
-            'class'=>'btn btn-info openBuilder pull-right',
-            'data-fancybox-type'=>'iframe',
-            'style'=>'margin:5px;',
-        )
-    );
-    ?>
-</p>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <p class="lead"><?= Yii::t('app','Mail preview');?>
+            <?php
+            echo Html::a(Yii::t('app','Edit letter'),
+                Url::toRoute(['letter/builder','key'=>$model->temp_id]),
+                array(
+                    'class'=>'btn btn-info openBuilder pull-right',
+                    'data-fancybox-type'=>'iframe',
+                    'style'=>'margin:5px;',
+                )
+            );
+            ?>
+        </p>
+    </div>
+</div>
+
+
 <iframe width="100%" frameborder="0" vspace="0" hspace="0" scrolling="no" src="<?= Url::toRoute(['letter/view','key'=>$model->temp_id]);?>" id="templateViewer">
 </iframe>

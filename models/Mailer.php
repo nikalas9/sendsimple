@@ -15,7 +15,7 @@ class Mailer extends \app\models\base\Mailer
     /**
      * @inheritdoc
      */
-    public function rules()
+    /*public function rules()
     {
         return [
             [['group_id', 'account_id'], 'integer'],
@@ -31,7 +31,7 @@ class Mailer extends \app\models\base\Mailer
             $data['Mailer']['base_ids'] = implode(',',$data['Mailer']['base_ids']);
         }
         return parent::load($data, $formName);
-    }
+    }*/
 
     /**
      * @return \yii\db\ActiveQuery
