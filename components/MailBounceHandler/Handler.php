@@ -13,8 +13,8 @@ namespace app\components\MailBounceHandler;
 
 use Cws\CwsDebug;
 use app\components\MailBounceHandler\Models\Mail;
-use Cws\MailBounceHandler\Models\Recipient;
-use Cws\MailBounceHandler\Models\Result;
+use app\components\MailBounceHandler\Models\Recipient;
+use app\components\MailBounceHandler\Models\Result;
 
 class Handler
 {

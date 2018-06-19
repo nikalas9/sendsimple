@@ -54,7 +54,8 @@ use core\components\ActiveForm;
 
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-6">
-                <button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
+                <!--<button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>-->
+                <?= Html::a('Back', ['mailer/update', 'id' => $letter->id], ['class' => 'btn btn-default']) ?>
                 <div class="pull-right">
                     <?= Html::submitButton('Save and continue', ['class' => 'btn btn-success']) ?>
                 </div>

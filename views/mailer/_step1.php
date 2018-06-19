@@ -27,7 +27,11 @@ use core\components\ActiveForm;
             <div class="col-lg-offset-3 col-lg-6">
                 <button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
                 <div class="pull-right">
-                    <?= Html::submitButton('Create and continue', ['class' => 'btn btn-success']) ?>
+                    <?php if(isset($letter)):?>
+                        <?= Html::submitButton('Update and continue', ['class' => 'btn btn-success']) ?>
+                    <?php else:?>
+                        <?= Html::submitButton('Create and continue', ['class' => 'btn btn-success']) ?>
+                    <?php endif;?>
                 </div>
             </div>
         </div>

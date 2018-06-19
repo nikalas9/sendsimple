@@ -48,6 +48,11 @@ class Account extends \app\models\base\Account
         return new BaseQuery(get_called_class());
     }
 
+    public function delete()
+    {
+        $this->del = 1;
+        $this->update(false, ['del']);
+    }
 
     // admin option ----------------------------------------------------------------------------------------------------
 
@@ -80,6 +85,9 @@ class Account extends \app\models\base\Account
                 ],
                 'from_name',
                 'smtp_host',
+                [
+                    'class' => \core\components\ActionColumn::className(),
+                ]
             ]
         ];
 

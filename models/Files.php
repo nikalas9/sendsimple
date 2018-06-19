@@ -51,6 +51,12 @@ class Files extends \app\models\base\Files
         return new BaseQuery(get_called_class());
     }
 
+    public function delete()
+    {
+        $this->del = 1;
+        $this->update(false, ['del']);
+    }
+
     // admin option ----------------------------------------------------------------------------------------------------
 
     public static function label($key)

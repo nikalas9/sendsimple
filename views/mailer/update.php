@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = 'Editing';
                 <div class="col-sm-6 col-sm-offset-3">
 
                     <div class="form-bootstrapWizard">
-                        <ul class="bootstrapWizard form-wizard">
+                        <!--<ul class="bootstrapWizard form-wizard">
                             <li class="active">
                                 <a href="#"  aria-expanded="true">
                                     <span class="step">1</span>
@@ -40,7 +40,61 @@ $this->params['breadcrumbs'][] = 'Editing';
                             <li class="">
                                 <a href="#"> <span class="step">4</span> <span class="title">Mailing Statistics</span> </a>
                             </li>
+                        </ul>-->
+                        <ul class="bootstrapWizard form-wizard">
+                            <?php if($step == '_step1'):?>
+                                <li class="active">
+                                    <a href="#"  aria-expanded="true">
+                                        <span class="step">1</span>
+                                        <span class="title">Mail Body</span>
+                                    </a>
+                                </li>
+                            <?php else:?>
+                                <li class="">
+                                    <span class="step">1</span> <span class="title">Mail Body</span>
+                                </li>
+                            <?php endif;?>
+
+                            <?php if($step == '_step2'):?>
+                                <li class="active">
+                                    <a href="#"  aria-expanded="true">
+                                        <span class="step">2</span>
+                                        <span class="title">Mailing Setting</span>
+                                    </a>
+                                </li>
+                            <?php else:?>
+                                <li class="">
+                                    <span class="step">2</span> <span class="title">Mailing Setting</span>
+                                </li>
+                            <?php endif;?>
+
+                            <?php if($step == '_step3'):?>
+                                <li class="active">
+                                    <a href="#"  aria-expanded="true">
+                                        <span class="step">3</span>
+                                        <span class="title">Contact List</span>
+                                    </a>
+                                </li>
+                            <?php else:?>
+                                <li class="">
+                                    <span class="step">4</span> <span class="title">Contact List</span>
+                                </li>
+                            <?php endif;?>
+
+                            <?php if($step == '_step4'):?>
+                                <li class="active">
+                                    <a href="#"  aria-expanded="true">
+                                        <span class="step">4</span>
+                                        <span class="title">Mailing Statistics</span>
+                                    </a>
+                                </li>
+                            <?php else:?>
+                                <li class="">
+                                    <span class="step">4</span> <span class="title">Mailing Statistics</span>
+                                </li>
+                            <?php endif;?>
                         </ul>
+
                         <div class="clearfix"></div>
                     </div>
                 </div>

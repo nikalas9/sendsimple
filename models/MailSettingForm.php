@@ -17,8 +17,9 @@ class MailSettingForm extends Model
     public function rules()
     {
         return [
-            [['group_id', 'account_id'], 'required'],
-            [['base_ids', 'account_id'], 'integer'],
+            [['group_id', 'account_id', 'base_ids'], 'required'],
+            [['group_id', 'account_id'], 'integer'],
+            [['base_ids'], 'safe'],
         ];
     }
 

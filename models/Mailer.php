@@ -11,27 +11,26 @@ use yii\behaviors\BlameableBehavior;
 
 class Mailer extends \app\models\base\Mailer
 {
+    const STATE_DRAFT = 0;
+    const STATE_QUEUED = 1;
+    const STATE_SENDING = 2;
+    const STATE_FINISH = 3;
+    const STATE_CANCEL = 4;
+    const STATE_PAUSE = 5;
+    const STATE_ERROR = -1;
 
     /**
      * @inheritdoc
      */
-    /*public function rules()
+    public function rules()
     {
         return [
             [['group_id', 'account_id'], 'integer'],
-            [['base_ids', 'account_id', 'name'], 'required'],
             [['body', 'temp_id', 'files'], 'string'],
             [['name'], 'string', 'max' => 255],
+            [['base_ids'], 'safe'],
         ];
     }
-
-    public function load($data, $formName = null)
-    {
-        if(Yii::$app->request->isPost){
-            $data['Mailer']['base_ids'] = implode(',',$data['Mailer']['base_ids']);
-        }
-        return parent::load($data, $formName);
-    }*/
 
     /**
      * @return \yii\db\ActiveQuery
@@ -127,8 +126,7 @@ class Mailer extends \app\models\base\Mailer
                             3 => 'Finish',
                             4 => 'Cancel',
                             5 => 'Pause',
-                            10 => 'Error',
-                            -1 => 'Delete',
+                            -1 => 'Error',
                         );
                         $label = 'default';
                         switch($model->status) {
@@ -138,7 +136,7 @@ class Mailer extends \app\models\base\Mailer
                             case '3':  $label = 'success'; break;
                             case '4':  $label = 'default'; break;
                             case '5':  $label = 'info'; break;
-                            case '10':  $label = 'error'; break;
+                            case '-1':  $label = 'error'; break;
                         }
                         return '<span style="font-size:85%;" class="label label-'.$label.'">'.$status[$model->status].'</span>';
                     },
@@ -148,7 +146,35 @@ class Mailer extends \app\models\base\Mailer
                     ],
                 ],
                 [
-                    'class' => \core\components\gridColumns\NameColumn::className(),
+                    'class' => \core\components\gridColumns\DateRangeColumn::className(),
+                    'attribute'=>'created_at',
+                    'value'=> function($model){
+                        return date("d/m/Y H:i",$model->created_at);
+                    },
+                ],
+                [
+                    'attribute' => 'name',
+                    'value' => function ($data) {
+                        return Html::a($data->name, ['view', 'id' => $data->id], ['data-pjax'=>0], true);
+                    },
+                    'format' => 'raw',
+                ],
+                [
+                    'class' => \core\components\gridColumns\Select2Column::className(),
+                    'attribute'=>'group_id',
+                    'filter'=> ArrayHelper::map(Group::find()->all(),'id','name'),
+                    'value'=> function($model){
+                        if($model->group){
+                            return Html::a($model->group->name,
+                                Url::toRoute(['mailer/index','MailerSearch[group_id]'=>$model->group->id]),
+                                [
+                                    'class'=> $model->group->color_class ? 'label '.$model->group->color_class : '',
+                                    'data-pjax' => 0
+                                ]
+                            );
+                        }
+                    },
+                    'format'=>'raw',
                 ],
                 /*[
                     'label' => 'Stack',
@@ -191,13 +217,13 @@ class Mailer extends \app\models\base\Mailer
                     'filter'=>false,
                     'contentOptions'=>['style'=>'width:80px; text-align:center;'],
                 ],*/
-                [
+                /*[
                     'class' => 'yii\grid\CheckboxColumn',
                     'options'=>['style'=>'width:10px']
                 ],
                 [
                     'class' => \core\components\ActionColumn::className(),
-                ],
+                ],*/
             ]
         ];
 

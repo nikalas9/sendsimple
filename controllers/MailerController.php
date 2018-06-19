@@ -22,18 +22,18 @@ class MailerController extends AdminController
     {
         $model = new \app\models\MailCreateForm();
 
-        if(Yii::$app->request->isPost and $model->load(Yii::$app->request->post())) {
+        if (Yii::$app->request->isPost
+            and $model->load(Yii::$app->request->post())) {
             if($model->validate()){
 
                 $letter = new Mailer();
-                $letter->status = 0;
+                $letter->status = Mailer::STATE_DRAFT;
                 $letter->attributes = $model->attributes;
                 $letter->save(false);
 
                 return $this->redirect(['setting','id'=>$letter->id]);
             }
-        }
-        else{
+        } else {
             $model->load(Yii::$app->request->get());
         }
 
@@ -41,6 +41,29 @@ class MailerController extends AdminController
 
         return $this->renderIsAjax('create', compact('model'));
     }
+
+    public function actionUpdate($id)
+    {
+        $letter = $this->findModel($id);
+        $model = new \app\models\MailCreateForm();
+
+        if (Yii::$app->request->isPost
+            and $model->load(Yii::$app->request->post())) {
+            if($model->validate()){
+
+                $letter->attributes = $model->attributes;
+                $letter->update(false);
+
+                return $this->redirect(['setting','id'=>$letter->id]);
+            }
+        } else {
+            $model->attributes = $letter->attributes;
+        }
+
+        $step = '_step1';
+        return $this->renderIsAjax('update', compact('step','model', 'letter'));
+    }
+
 
     public function actionSetting($id)
     {

@@ -18,8 +18,8 @@ class MailerSearch extends Mailer
     public function rules()
     {
         return [
-            [['id', 'status', 'date_create', 'user_create', 'date_update', 'user_update', 'lang_id', 'template_id', 'news_id', 'group_id', 'date_start', 'temp_id', 'max'], 'integer'],
-            [['name', 'base_id', 'from_name', 'from_email', 'body', 'files'], 'safe'],
+            [['id', 'status', 'group_id', 'lang_id'], 'integer'],
+            [['name'], 'string'],
         ];
     }
 
@@ -62,25 +62,11 @@ class MailerSearch extends Mailer
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'date_create' => $this->date_create,
-            'user_create' => $this->user_create,
-            'date_update' => $this->date_update,
-            'user_update' => $this->user_update,
             'lang_id' => $this->lang_id,
-            'template_id' => $this->template_id,
-            'news_id' => $this->news_id,
             'group_id' => $this->group_id,
-            'date_start' => $this->date_start,
-            'temp_id' => $this->temp_id,
-            'max' => $this->max,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'base_id', $this->base_id])
-            ->andFilterWhere(['like', 'from_name', $this->from_name])
-            ->andFilterWhere(['like', 'from_email', $this->from_email])
-            ->andFilterWhere(['like', 'body', $this->body])
-            ->andFilterWhere(['like', 'files', $this->files]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

@@ -74,7 +74,9 @@ iFrameResize();
 
 ");
 
-echo Html::activeHiddenInput($model,'body');
+echo Html::activeHiddenInput($model,'body', [
+    'id' => 'Mailer_body'
+]);
 echo Html::activeHiddenInput($model,'temp_id');
 ?>
 

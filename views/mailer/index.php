@@ -88,10 +88,18 @@ yii\bootstrap\Modal::begin([
 <div id="modalMdSimpleContent">
     <div class="btn-group btn-group-justified">
         <div class="btn-group">
-            <?= Html::a('Editor',['create','modeId'=>'edit'],['class'=>'btn btn-default']);?>
+            <?= Html::a('Mail Builder',
+                [
+                    'create',
+                    'modeId' => 'edit'
+                ], [
+                    'class'=>'btn btn-default btn-lg'
+                ]);?>
         </div>
         <div class="btn-group">
-            <?= Html::a('Text',['create'],['class'=>'btn btn-default']);?>
+            <?= Html::a('Text Message', ['create'],[
+                    'class'=>'btn btn-default btn-lg'
+                ]);?>
         </div>
     </div>
 </div>

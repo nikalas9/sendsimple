@@ -21,27 +21,35 @@ class MailSendController extends Controller
             $start_time = microtime(true);
 
             $mailer = Mailer::find()
-                ->where('status = 2')
+                ->andWhere([
+                    'status' => Mailer::STATE_SENDING
+                ])
                 ->orderBy('id asc')
                 ->one();
             if($mailer){
-                $list = MailerData::find()
-                    ->where([
-                        'status'=>0,
-                        'mailer_id'=>$mailer->id,
-                    ])
-                    ->all();
-                if($list) {
-                    foreach ($list as $row) {
-                        $row->senderMail($mailer);
+                try {
+                    $list = MailerData::find()
+                        ->where([
+                            'status' => 0,
+                            'mailer_id' => $mailer->id,
+                        ])
+                        ->all();
+                    if($list) {
+                        foreach ($list as $row) {
+                            $row->senderMail($mailer);
 
-                        if(Yii::$app->params['timeMailSendSleep']) {
-                           sleep(Yii::$app->params['timeMailSendSleep']);
+                            if(Yii::$app->params['timeMailSendSleep']) {
+                                sleep(Yii::$app->params['timeMailSendSleep']);
+                            }
                         }
                     }
+                    $mailer->status = Mailer::STATE_FINISH;
+                    $mailer->save(false);
+                } catch (\Exception $e) {
+                    $mailer->error_message = $e->getMessage();
+                    $mailer->status = Mailer::STATE_ERROR;
+                    $mailer->save(false);
                 }
-                $mailer->status = 3;
-                $mailer->save(false);
             }
 
             $load_time = microtime(true) - $start_time;

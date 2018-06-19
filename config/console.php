@@ -16,6 +16,10 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'scriptUrl' => $params['baseUrl'],
+        ],
         'log' => [
             'targets' => [
                 [
@@ -24,6 +28,9 @@ $config = [
                 ],
             ],
         ],
+    ],
+    'aliases' => [
+        '@core' => '@app/components/core',
     ],
     'params' => $params,
     /*

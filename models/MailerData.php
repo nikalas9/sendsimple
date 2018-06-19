@@ -24,6 +24,7 @@ class MailerData extends \app\models\base\MailerData
             if($this->isNewRecord){
                 $this->hash = uniqid();
             }
+            return true;
         }
     }
 

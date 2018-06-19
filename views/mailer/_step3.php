@@ -22,15 +22,16 @@ $this->registerJs("
 
         <p class="text-center">
             <?= Html::a('Start Send',['send-start','id'=>$letter->id],[
-                'class' => 'btn btn-success btn-send-start'
+                'class' => 'btn btn-success btn-lg btn-send-start'
             ]);?>
         </p>
 
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-6">
-                <button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>
+                <!--<button onclick="window.history.back();" class="btn btn-default" type="button">Cancel</button>-->
+                <?= Html::a('Back', ['mailer/setting', 'id' => $letter->id], ['class' => 'btn btn-default']) ?>
                 <div class="pull-right">
-                    <?= Html::submitButton('Close', ['class' => 'btn btn-success']) ?>
+                    <?= Html::submitButton('Close', ['class' => 'btn btn-warning']) ?>
                 </div>
             </div>
         </div>

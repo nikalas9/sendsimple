@@ -21,7 +21,9 @@ class PreContactController extends Controller
             $start_time = microtime(true);
 
             $mails = Mailer::find()
-                ->andWhere('status = 1')
+                ->andWhere([
+                    'status' => Mailer::STATE_QUEUED
+                ])
                 ->orderBy('id asc')
                 ->all();
             foreach ($mails as $mailer) {
@@ -51,7 +53,7 @@ class PreContactController extends Controller
                             }
                         }
                     }
-                    $mailer->status = 2;
+                    $mailer->status = Mailer::STATE_SENDING;
                     $mailer->save(false);
 
                     $transaction->commit();
