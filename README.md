@@ -42,6 +42,25 @@
 ```bash
 git pull https://github.com/nikalas9/sendsimple/
 ```
+Скопировать /environments/demo-dev в /environments/dev.
+
+Для файла конфигурации /environments/dev/config/console-local.php указать доступ в базу.
+
+Для файла конфигурации /environments/dev/config/web-local.php указать доступ в базу.
+
+Для файла конфигурации /environments/dev/config/params-local.php указать адресс сайта.
+
+Заустить в терминале php init , с параметром 0 (для dev среды).
+
+После этого файлы конфигурации окажутся из /environments/dev/config в /config
+
+Залить базу проекта, для этого необходимо выполнить:
+
+```bash
+php yii migrate
+```
+
+Или взять дамп из /environments/data/pg.sql
 
 
 ### Ключевые особенности Pro версии 
