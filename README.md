@@ -38,7 +38,7 @@
 - Для php необходимо включить php_imap extension.
 - База данных Postgresql.
 
-Устанавливать проект не нужно, просто сделать:
+Устанавливать проекта:
 ```bash
 git pull https://github.com/nikalas9/sendsimple/
 ```
@@ -61,6 +61,18 @@ php yii migrate
 ```
 
 Или взять дамп из /environments/data/pg.sql
+
+Если админ панель работает, след шаг настройка процессов отвечающих за рассылку писем:
+
+В фон добавить выполнение след процессов:
+```bash
+php yii pre-contact
+php yii mail-send
+```
+В крон добавить выполнение след процессов:
+```bash
+php yii mail-bounce
+```
 
 
 ### Ключевые особенности Pro версии 
