@@ -25,7 +25,8 @@
         "roopz/yii2-imap": "dev-master",
         "crazy-max/cws-mail-bounce-handler": "^1.10",
         "c006/yii2-migration-utility": "dev-master",
-        "axllent/simplehtmldom": "^1.5"
+        "axllent/simplehtmldom": "^1.5",
+        "yiisoft/yii2-redis": "~2.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

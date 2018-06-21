@@ -10,5 +10,5 @@ return array(
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
-    'Cws' => array($vendorDir . '/crazy-max/cws-dump/lib', $vendorDir . '/crazy-max/cws-debug/lib', $vendorDir . '/crazy-max/cws-mail-bounce-handler/lib'),
+    'Cws' => array($vendorDir . '/crazy-max/cws-debug/lib', $vendorDir . '/crazy-max/cws-dump/lib', $vendorDir . '/crazy-max/cws-mail-bounce-handler/lib'),
 );

@@ -57,6 +57,8 @@ git pull https://github.com/nikalas9/sendsimple/
 Залить базу проекта, для этого необходимо выполнить:
 
 ```bash
+php yii migrate --migrationPath=@vendor/amnah/yii2-user/migrations
+php yii migrate --migrationPath=@yii/log/migrations/
 php yii migrate
 ```
 

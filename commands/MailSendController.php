@@ -14,9 +14,14 @@ class MailSendController extends Controller
 {
     public function actionIndex()
     {
+        Yii::$app->redis->executeCommand("SET", ['mail-send_start', time()]);
+
         while (1) {
 
             gc_enable();
+
+            Yii::$app->redis->executeCommand("SET", ['mail-send_live', time()]);
+            Yii::$app->redis->executeCommand("SET", ['mail-send_status', 1]);
 
             $start_time = microtime(true);
 
@@ -35,8 +40,13 @@ class MailSendController extends Controller
                         ])
                         ->all();
                     if($list) {
+                        Yii::$app->redis->executeCommand("SET", ['mail-send_status', 3]);
+                        Yii::$app->redis->executeCommand("SET", ['mail-send_mailerId', $mailer->id]);
+                        Yii::$app->redis->executeCommand("SET", ['mail-send_stack', count($list)]);
+                        Yii::$app->redis->executeCommand("SET", ['mail-send_counter', 0]);
                         foreach ($list as $row) {
                             $row->senderMail($mailer);
+                            Yii::$app->redis->executeCommand("INCR", ['mail-send_counter']);
 
                             if(Yii::$app->params['timeMailSendSleep']) {
                                 sleep(Yii::$app->params['timeMailSendSleep']);
@@ -55,7 +65,8 @@ class MailSendController extends Controller
             $load_time = microtime(true) - $start_time;
             if($load_time < Yii::$app->params['timeMailSendProcess']){
                 $sleep_time = Yii::$app->params['timeMailSendProcess'] - $load_time;
-                echo 'sleep' . $sleep_time . "\n";
+                //echo 'sleep' . $sleep_time . "\n";
+                Yii::$app->redis->executeCommand("SET", ['mail-send_status', 1]);
                 sleep($sleep_time);
             }
 

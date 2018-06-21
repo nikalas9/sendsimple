@@ -65,6 +65,16 @@ class ManagerMenuWidget extends Widget
                 'link' => Url::to(['/user/admin']),
                 'icon' => 'fa-cloud-download',
             ];
+            $list[] = [
+                'title' => 'Monit',
+                'link' => Url::to(['/monit/index']),
+                'icon' => 'fa-cloud',
+            ];
+            $list[] = [
+                'title' => 'Logger',
+                'link' => Url::to(['/logger/index']),
+                'icon' => 'fa-cloud',
+            ];
         }
 
         $route = explode('/',Yii::$app->requestedRoute);

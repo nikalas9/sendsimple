@@ -17,6 +17,7 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
+            'yii\\redis\\' => 10,
             'yii\\jui\\' => 8,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
@@ -62,6 +63,10 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         'yii\\swiftmailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
+        ),
+        'yii\\redis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-redis',
         ),
         'yii\\jui\\' => 
         array (
@@ -166,8 +171,8 @@ class ComposerStaticInit6f25e4b4a170820df6500687a0e7cea4
         array (
             'Cws' => 
             array (
-                0 => __DIR__ . '/..' . '/crazy-max/cws-dump/lib',
-                1 => __DIR__ . '/..' . '/crazy-max/cws-debug/lib',
+                0 => __DIR__ . '/..' . '/crazy-max/cws-debug/lib',
+                1 => __DIR__ . '/..' . '/crazy-max/cws-dump/lib',
                 2 => __DIR__ . '/..' . '/crazy-max/cws-mail-bounce-handler/lib',
             ),
         ),

@@ -21,10 +21,18 @@ $config = [
             'scriptUrl' => $params['baseUrl'],
         ],
         'log' => [
+            'flushInterval' => 1,
             'targets' => [
-                [
+                /*[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                ],*/
+                [
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['error','warning'],
+                    'logVars' => [],
+                    'logTable' => 'log_alert',
+                    'exportInterval' => 1,
                 ],
             ],
         ],

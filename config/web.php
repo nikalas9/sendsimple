@@ -16,7 +16,10 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'WncLmQ4U6VDuT0vFL_zx04UKd8g7L12B',
+            //'cookieValidationKey' => '',
+            'enableCsrfValidation' => false,
+            'enableCsrfCookie' => false,
+            'enableCookieValidation' => false,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -42,12 +45,13 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['error','warning'],
+                    'logVars' => ['_GET', '_POST'],
+                    'logTable' => 'log_alert',
                 ],
             ],
         ],
-        'db' => $db,
 
         'assetManager' => [
             'assetMap' => [

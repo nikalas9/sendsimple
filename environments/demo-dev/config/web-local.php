@@ -9,6 +9,12 @@ $config = [
             'charset'  => 'utf8',
             'tablePrefix' => 'tbl_',
         ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0
+        ],
     ]
 ];
 

@@ -14,9 +14,13 @@ class PreContactController extends Controller
 {
     public function actionIndex()
     {
+        Yii::$app->redis->executeCommand("SET", ['pre-contact_start', time()]);
         while (1) {
 
             gc_enable();
+
+            Yii::$app->redis->executeCommand("SET", ['pre-contact_live', time()]);
+            Yii::$app->redis->executeCommand("SET", ['pre-contact_status', 1]);
 
             $start_time = microtime(true);
 
@@ -66,7 +70,8 @@ class PreContactController extends Controller
             $load_time = microtime(true) - $start_time;
             if($load_time < Yii::$app->params['timePreContactProcess']){
                 $sleep_time = Yii::$app->params['timePreContactProcess'] - $load_time;
-                echo 'sleep' . $sleep_time . "\n";
+                //echo 'sleep' . $sleep_time . "\n";
+                Yii::$app->redis->executeCommand("SET", ['pre-contact_status', 2]);
                 sleep($sleep_time);
             }
 

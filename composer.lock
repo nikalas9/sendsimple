@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "010d1f6e7bfd96528047005680096367",
-    "content-hash": "1d23203962eb3b5b3b52bc5aba8d84c1",
+    "content-hash": "33bc4b7c81fb547151aff1616c9d313f",
     "packages": [
         {
             "name": "amnah/yii2-user",
@@ -49,7 +48,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2016-02-28 04:38:35"
+            "time": "2016-02-28T04:38:35+00:00"
         },
         {
             "name": "axllent/simplehtmldom",
@@ -98,7 +97,7 @@
                 "dom",
                 "html"
             ],
-            "time": "2016-11-04 02:18:38"
+            "time": "2016-11-04T02:18:38+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -350,7 +349,7 @@
                 "tables",
                 "yii2"
             ],
-            "time": "2016-11-01 04:58:36"
+            "time": "2016-11-01T04:58:36+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -410,7 +409,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2015-03-06 05:28:07"
+            "time": "2015-03-06T05:28:07+00:00"
         },
         {
             "name": "crazy-max/cws-debug",
@@ -453,7 +452,7 @@
                 "log",
                 "print"
             ],
-            "time": "2016-11-28 01:21:25"
+            "time": "2016-11-28T01:21:25+00:00"
         },
         {
             "name": "crazy-max/cws-dump",
@@ -499,7 +498,7 @@
                 "print_r",
                 "var_dump"
             ],
-            "time": "2016-11-28 00:44:40"
+            "time": "2016-11-28T00:44:40+00:00"
         },
         {
             "name": "crazy-max/cws-mail-bounce-handler",
@@ -543,7 +542,7 @@
                 "dsn",
                 "mail"
             ],
-            "time": "2016-12-07 22:14:44"
+            "time": "2016-12-07T22:14:44+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -587,7 +586,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2015-08-05 01:03:42"
+            "time": "2015-08-05T01:03:42+00:00"
         },
         {
             "name": "mihaildev/yii2-elfinder",
@@ -638,7 +637,7 @@
                 "filemanager",
                 "yii"
             ],
-            "time": "2016-05-11 14:20:43"
+            "time": "2016-05-11T14:20:43+00:00"
         },
         {
             "name": "phpoffice/phpexcel",
@@ -695,7 +694,8 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2015-05-01 07:00:55"
+            "abandoned": "phpoffice/phpspreadsheet",
+            "time": "2015-05-01T07:00:55+00:00"
         },
         {
             "name": "roopz/yii2-imap",
@@ -742,7 +742,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-05-31 10:52:03"
+            "time": "2016-05-31T10:52:03+00:00"
         },
         {
             "name": "studio-42/elfinder",
@@ -800,7 +800,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2016-04-11 08:37:42"
+            "time": "2016-04-11T08:37:42+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -853,7 +853,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-05-01 08:45:47"
+            "time": "2016-05-01T08:45:47+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -906,7 +906,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:55:57"
+            "time": "2016-03-04T07:55:57+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -953,7 +953,7 @@
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
-            "time": "2015-12-08 16:14:14"
+            "time": "2015-12-08T16:14:14+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1047,7 +1047,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-04-28 14:50:20"
+            "time": "2016-04-28T14:50:20+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -1095,7 +1095,7 @@
                 "oauth",
                 "yii2"
             ],
-            "time": "2015-09-23 17:26:02"
+            "time": "2015-09-23T17:26:02+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1145,7 +1145,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2016-03-17 03:29:28"
+            "time": "2016-03-17T03:29:28+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1192,7 +1192,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-02-06 00:49:24"
+            "time": "2016-02-06T00:49:24+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -1242,7 +1242,55 @@
                 "jQuery UI",
                 "yii2"
             ],
-            "time": "2016-03-17 03:53:41"
+            "time": "2016-03-17T03:53:41+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-redis",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-redis.git",
+                "reference": "7fd93ff3847e765964c8c83b7e3eed0281078916"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/7fd93ff3847e765964c8c83b7e3eed0281078916",
+                "reference": "7fd93ff3847e765964c8c83b7e3eed0281078916",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": ">=2.0.4"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\redis\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
+                }
+            ],
+            "description": "Redis Cache, Session and ActiveRecord for the Yii framework",
+            "keywords": [
+                "active-record",
+                "cache",
+                "redis",
+                "session",
+                "yii2"
+            ],
+            "time": "2016-03-17T04:11:03+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -1292,7 +1340,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-03-17 03:58:49"
+            "time": "2016-03-17T03:58:49+00:00"
         }
     ],
     "packages-dev": [
@@ -1369,7 +1417,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2016-04-29 12:21:54"
+            "time": "2016-04-29T12:21:54+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -1407,7 +1455,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
+            "time": "2016-04-07T12:29:16+00:00"
         },
         {
             "name": "yiisoft/yii2-codeception",
@@ -1453,7 +1501,7 @@
                 "yii2"
             ],
             "abandoned": "codeception/codeception",
-            "time": "2016-03-17 03:41:26"
+            "time": "2016-03-17T03:41:26+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -1500,7 +1548,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2016-03-17 03:50:19"
+            "time": "2016-03-17T03:50:19+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -1547,7 +1595,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-03-01T06:22:44+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -1600,7 +1648,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18 14:09:46"
+            "time": "2016-03-18T14:09:46+00:00"
         }
     ],
     "aliases": [],

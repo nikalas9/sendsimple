@@ -7,8 +7,8 @@ class m170126_102314_mailer_base extends Migration
     public function up()
     {
         $tableOptions_pgsql = '';
-       
-        $this->createTable('{{log_ask}}', [
+
+        /*$this->createTable('{{log_ask}}', [
             'id' =>  $this->primaryKey(),
             'ip' => $this->string(50),
             'cmd' => $this->string(50),
@@ -17,7 +17,7 @@ class m170126_102314_mailer_base extends Migration
             'result' => $this->text(),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
-        ], $tableOptions_pgsql);
+        ], $tableOptions_pgsql);*/
 
         $this->createTable('{{%account}}', [
             'id' =>  $this->primaryKey(),
@@ -39,6 +39,7 @@ class m170126_102314_mailer_base extends Migration
             'updated_by' => $this->integer(),
             'sort' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
         ], $tableOptions_pgsql);
 
         $this->createTable('{{%base}}', [
@@ -52,9 +53,10 @@ class m170126_102314_mailer_base extends Migration
             'updated_by' => $this->integer(),
             'sort' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
         ], $tableOptions_pgsql);
 
-        $this->createTable('{{%black_list}}', [
+        /*$this->createTable('{{%black_list}}', [
             'id' =>  $this->primaryKey(),
             'email' => $this->string(),
             'type' => $this->text(),
@@ -63,9 +65,9 @@ class m170126_102314_mailer_base extends Migration
             'updated_at' => $this->integer(),
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
-        ], $tableOptions_pgsql);
+        ], $tableOptions_pgsql);*/
 
-        $this->createTable('{{%city}}', [
+        /*$this->createTable('{{%city}}', [
             'id' =>  $this->primaryKey(),
             'name' => $this->string(),
             'country_id' => $this->integer(),
@@ -74,7 +76,7 @@ class m170126_102314_mailer_base extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'status' => $this->smallInteger()->defaultValue(1),
-        ], $tableOptions_pgsql);
+        ], $tableOptions_pgsql);*/
 
         $this->createTable('{{%clients}}', [
             'id' =>  $this->primaryKey(),
@@ -109,9 +111,10 @@ class m170126_102314_mailer_base extends Migration
             'updated_by' => $this->integer(),
             'sort' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
         ], $tableOptions_pgsql);
 
-        $this->createTable('{{%country}}', [
+        /*$this->createTable('{{%country}}', [
             'id' =>  $this->primaryKey(),
             'name' => $this->string(),
             'iso' => $this->string(10),
@@ -120,7 +123,7 @@ class m170126_102314_mailer_base extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
-        ], $tableOptions_pgsql);
+        ], $tableOptions_pgsql);*/
 
         $this->createTable('{{%files}}', [
             'id' =>  $this->primaryKey(),
@@ -138,6 +141,7 @@ class m170126_102314_mailer_base extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'status' => $this->smallInteger()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
         ], $tableOptions_pgsql);
 
         $this->createTable('{{%group}}', [
@@ -153,6 +157,7 @@ class m170126_102314_mailer_base extends Migration
             'updated_by' => $this->integer(),
             'sort' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
         ], $tableOptions_pgsql);
 
         $this->createTable('{{%lang}}', [
@@ -165,6 +170,14 @@ class m170126_102314_mailer_base extends Migration
             'updated_by' => $this->integer(),
             'sort' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
+        ], $tableOptions_pgsql);
+
+        $this->createTable('{{%letter_file}}', [
+            'id' =>  $this->primaryKey(),
+            'status' => $this->integer()->defaultValue(1),
+            'name' => $this->string(),
+            'file' => $this->string(),
         ], $tableOptions_pgsql);
 
         $this->createTable('{{%mailer}}', [
@@ -186,6 +199,8 @@ class m170126_102314_mailer_base extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
+            'error_message' => $this->text(),
         ], $tableOptions_pgsql);
 
         $this->createTable('{{%mailer_data}}', [
@@ -227,16 +242,8 @@ class m170126_102314_mailer_base extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'sort' => $this->integer(),
+            'del' => $this->smallInteger()->defaultValue(0),
             'status' => $this->integer()->defaultValue(1),
-        ], $tableOptions_pgsql);
-
-        $this->createTable('{{%tmp_link}}', [
-            'id' =>  $this->primaryKey(),
-            'mailer_data_id' => $this->integer(),
-            'link' => $this->text(),
-            'hash' => $this->string(),
-            'count' => $this->smallInteger(),
-            'created_at' => $this->integer(),
         ], $tableOptions_pgsql);
 
         $this->createTable('{{%templates}}', [
@@ -251,15 +258,18 @@ class m170126_102314_mailer_base extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'status' => $this->integer()->defaultValue(1),
+            'del' => $this->smallInteger()->defaultValue(0),
+            'files' => $this->text(),
         ], $tableOptions_pgsql);
 
-        $this->createTable('{{%letter_file}}', [
+        $this->createTable('{{%tmp_link}}', [
             'id' =>  $this->primaryKey(),
-            'status' => $this->integer()->defaultValue(1),
-            'name' => $this->string(),
-            'file' => $this->string(),
+            'mailer_data_id' => $this->integer(),
+            'link' => $this->text(),
+            'hash' => $this->string(),
+            'count' => $this->smallInteger(),
+            'created_at' => $this->integer(),
         ], $tableOptions_pgsql);
-
 
 
         /*
