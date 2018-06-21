@@ -8,12 +8,20 @@ $config = [
             'password' => '',
             'charset'  => 'utf8',
             'tablePrefix' => 'tbl_',
+            'enableSchemaCache' => true,
+            'schemaCacheDuration' => 3600,
+            'schemaCache' => 'cache',
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => 'localhost',
             'port' => 6379,
             'database' => 0
+        ],
+        'cache' => [
+            'class' => 'yii\redis\Cache',
+            'keyPrefix' => 'mlrcache',
+            'redis' => 'redis'
         ],
     ],
     'timeZone' => 'Europe/Kiev',

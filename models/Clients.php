@@ -17,7 +17,7 @@ class Clients extends \app\models\base\Clients
     {
         return [
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'country_id', 'city_id'], 'integer'],
-            [['email','baseIds'], 'required'],
+            [['email', 'baseIds'], 'required'],
             [['other'], 'string'],
             [['email'], 'unique'],
             [['email'], 'string', 'max' => 100],

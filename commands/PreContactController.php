@@ -34,8 +34,8 @@ class PreContactController extends Controller
 
                 $transaction = Yii::$app->db->beginTransaction();
                 try {
-                    echo 'MailerId' . $mailer->id . "\n";
-                    if($mailer->base_ids){
+                    //echo 'MailerId' . $mailer->id . "\n";
+                    if ($mailer->base_ids){
                         $baseIds = explode(',',$mailer->base_ids);
 
                         $clients = Clients::find()

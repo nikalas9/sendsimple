@@ -37,8 +37,6 @@ class MailerController extends AdminController
             $model->load(Yii::$app->request->get());
         }
 
-        //Yii::$app->controller->beforeBreadcrumbs($model);
-
         return $this->renderIsAjax('create', compact('model'));
     }
 
@@ -78,12 +76,10 @@ class MailerController extends AdminController
 
                 return $this->redirect(['send-order','id'=>$letter->id]);
             }
-        }
-        else{
+        } else {
             $model->attributes = $letter->attributes;
         }
 
-        //Yii::$app->controller->beforeBreadcrumbs($model);
         $step = '_step2';
         return $this->renderIsAjax('update', compact('step','model','letter'));
     }
@@ -92,40 +88,55 @@ class MailerController extends AdminController
     {
         $letter = $this->findModel($id);
 
-
-        //Yii::$app->controller->beforeBreadcrumbs($model);
         $step = '_step3';
         return $this->renderIsAjax('update', compact('step','letter'));
     }
-
 
     public function actionSendStart($id)
     {
         $letter = $this->findModel($id);
         $letter->status = 1;
         $letter->update(false,['status']);
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
-
-
 
     public function actionSendDemo($id)
     {
-        $mailer = \app\models\Mailer::findOne($id);
-        $account = $mailer->account;
+        $letter = $this->findModel($id);
 
-        $client = Clients::find()->where([
-            'email'=>'nikalas9@ya.ru'
-        ])->one();
+        if ($email = Yii::$app->request->post('testEmail')) {
 
-        $model = new MailerData();
-        $model->status = 0;
-        $model->client_id = $client->id;
-        $model->client_email = $client->email;
-        $model->mailer_id = $mailer->id;
-        $model->lang_id = $mailer->lang_id;
-        $model->save(false);
+            $client = Clients::find()
+                ->where([
+                    'email' => $email
+                ])
+                ->one();
+            if ($client == null) {
+                $client = new Clients;
+                $client->email = $email;
+                $client->save(false);
+            }
 
-        $model->senderMail($mailer);
+            $model = new MailerData();
+            $model->status = 0;
+            $model->client_id = $client->id;
+            $model->client_email = $client->email;
+            $model->mailer_id = $letter->id;
+            $model->lang_id = $letter->lang_id;
+            $model->save(false);
+
+            $model->senderMail($letter);
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
+    public function actionState($id)
+    {
+        $letter = $this->findModel($id);
+
+        $step = '_step4';
+        return $this->renderIsAjax('update', compact('step','letter'));
+    }
 }

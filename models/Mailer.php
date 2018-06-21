@@ -155,7 +155,14 @@ class Mailer extends \app\models\base\Mailer
                 [
                     'attribute' => 'name',
                     'value' => function ($data) {
-                        return Html::a($data->name, ['view', 'id' => $data->id], ['data-pjax'=>0], true);
+                        if ($data->status == Mailer::STATE_DRAFT) {
+                            return Html::a($data->name, ['update', 'id' => $data->id], ['data-pjax'=>0], true);
+                        } elseif ($data->status == Mailer::STATE_FINISH) {
+                            return Html::a($data->name, ['view', 'id' => $data->id], ['data-pjax'=>0], true);
+                        } else {
+                            return Html::a($data->name, ['state', 'id' => $data->id], ['data-pjax'=>0], true);
+                        }
+
                     },
                     'format' => 'raw',
                 ],
