@@ -23,7 +23,7 @@ class LetterController extends Controller
             $content = $mailer->body;
             $content = $model->filterMail($content, $mailer);
             $content = $model::convertMail($content, false);
-            return $this->render('view',[
+            return $this->render('/letter/view',[
                 'content'=>$content
             ]);
         } else {
