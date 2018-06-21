@@ -22,7 +22,7 @@ class LetterController extends Controller
             $mailer = $model->mailer;
             $content = $mailer->body;
             $content = $model->filterMail($content, $mailer);
-            $content = $model::convertMail($content,false);
+            $content = $model::convertMail($content, false);
             return $this->render('view',[
                 'content'=>$content
             ]);
@@ -67,7 +67,6 @@ class LetterController extends Controller
                 if($mailerData->open == null){
                     $mailerData->open = time();
                 }
-                $mailerData->open = time();
                 $mailerData->link = json_encode($link);
                 $mailerData->server = json_encode($_SERVER);
                 $mailerData->update(false,['open','link','server']);

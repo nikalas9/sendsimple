@@ -13,6 +13,14 @@ class MailerData extends \app\models\base\MailerData
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getMailer()
+    {
+        return $this->hasOne(\app\models\Mailer::className(), ['id' => 'mailer_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getClient()
     {
         return $this->hasOne(\app\models\Clients::className(), ['id' => 'client_id']);

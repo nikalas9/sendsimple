@@ -66,7 +66,7 @@ class MailSendController extends Controller
             if($load_time < Yii::$app->params['timeMailSendProcess']){
                 $sleep_time = Yii::$app->params['timeMailSendProcess'] - $load_time;
                 //echo 'sleep' . $sleep_time . "\n";
-                Yii::$app->redis->executeCommand("SET", ['mail-send_status', 1]);
+                Yii::$app->redis->executeCommand("SET", ['mail-send_status', 2]);
                 sleep($sleep_time);
             }
 
