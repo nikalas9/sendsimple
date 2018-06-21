@@ -15,7 +15,8 @@ $config = [
             'port' => 6379,
             'database' => 0
         ],
-    ]
+    ],
+    'timeZone' => 'Europe/Kiev',
 ];
 
 if (YII_ENV_DEV) {
@@ -23,12 +24,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
+        'allowedIPs' => ['*']
     ];
 
-    $config['bootstrap'][] = 'gii';
+    /*$config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-    ];
+    ];*/
 }
 
 return $config;

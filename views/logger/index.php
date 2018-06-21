@@ -23,6 +23,19 @@ $option = $searchModel->optionIndex($searchModel);
         <div class="panel panel-default">
             <div class="panel-body">
 
+                <div class="row">
+                    <div class="col-sm-12">
+                        <?= Html::a('Clear', ['clear'], [
+                            'class' => 'btn btn-sm btn-warning pull-right',
+                            'data' => [
+                                'confirm' => 'Are you sure you want to clear log?',
+                                'method' => 'post',
+                            ],
+                        ]) ?>
+                    </div>
+                </div>
+
+
                 <?php Pjax::begin([
                     'id'=> str_replace('/','-',Yii::$app->controller->id) . '-grid-pjax',
                 ]) ?>
