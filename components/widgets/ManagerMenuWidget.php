@@ -45,6 +45,11 @@ class ManagerMenuWidget extends Widget
             'icon' => 'fa-cloud',
         ];
         $list[] = [
+            'title' => 'Templates',
+            'link' => Url::to(['/templates/index']),
+            'icon' => 'fa-cloud',
+        ];
+        $list[] = [
             'title' => 'Account',
             'link' => Url::to(['/account/index']),
             'icon' => 'fa-cloud',

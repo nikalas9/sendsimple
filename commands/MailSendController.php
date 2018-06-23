@@ -45,6 +45,11 @@ class MailSendController extends Controller
                         Yii::$app->redis->executeCommand("SET", ['mail-send_stack', count($list)]);
                         Yii::$app->redis->executeCommand("SET", ['mail-send_counter', 0]);
                         foreach ($list as $row) {
+                            $mailerId = Yii::$app->redis->executeCommand("GET", ['mail-send_mailerId']);
+                            if ($mailer->id != $mailerId) {
+                               break; //pause
+                            }
+
                             $row->senderMail($mailer);
                             Yii::$app->redis->executeCommand("INCR", ['mail-send_counter']);
 

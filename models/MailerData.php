@@ -63,7 +63,8 @@ class MailerData extends \app\models\base\MailerData
 
         $message = $eMailer->compose();
         $header = $message->getSwiftMessage()->getHeaders();
-        //$header->addTextHeader('List-Unsubscribe', '<' . 'https://www.google.com.ua/' . '>');
+        $unsubscribeLink = Url::toRoute(['/browse/letter/unsubscribe','id'=>$this->hash], 'http');
+        $header->addTextHeader('List-Unsubscribe', '<' . $unsubscribeLink . '>');
         $msgId = $header->get('Message-ID')->getId();
         $this->message_id = $msgId;
 
@@ -107,13 +108,13 @@ class MailerData extends \app\models\base\MailerData
             }
         }
 
-        $webLink = Url::toRoute(['/browse/letter/view','id'=>$this->hash], 'http'); //Yii::$app->params['baseUrl']);
+        $webLink = Url::toRoute(['/browse/letter/view','id'=>$this->hash], 'http');
         $template->setVar('link.web', $webLink);
 
         $content = $template->getTemplate($content);
 
         // добавляем картинку отслеживания
-        $imageLink = Url::toRoute(['/browse/letter/open','id'=>$this->hash], 'http'); //Yii::$app->params['baseUrl']);
+        $imageLink = Url::toRoute(['/browse/letter/open','id'=>$this->hash], 'http');
         $content .= '<img border="0" width="1" height="1" alt="" src="'.$imageLink.'">';
 
         // заменяем настоящие ссылки

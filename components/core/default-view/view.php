@@ -43,10 +43,10 @@ $option = $model->optionView($model);
             <?= DetailView::widget([
                 'model' => $model,
                 'attributes' => $option['items'],
-                'options'=>[
+                'options'=> (isset($option['widgetOption']) ? $option['widgetOption'] : [
                     'class'=>'table table-striped table-bordered detail-view',
                     'style'=>'max-width:800px;'
-                ]
+                ])
             ]) ?>
 
 

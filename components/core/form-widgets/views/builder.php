@@ -78,6 +78,7 @@ echo Html::activeHiddenInput($model,'body', [
     'id' => 'Mailer_body'
 ]);
 echo Html::activeHiddenInput($model,'temp_id');
+echo Html::activeHiddenInput($model,'mode_id');
 ?>
 
 <div class="row">

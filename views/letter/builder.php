@@ -108,7 +108,7 @@ $this->registerJs($htmlbuttonsJs,View::POS_END,'htmlbuttons');
 
                     $('#sortable').append('<div class=\"row-block\"><div class=\"content-block\"></div></div>');
                     blockUpdateRow = $('#sortable').children('.row-block').filter(':last');
-                    blockUpdateSet('9','".Yii::t('app','Good afternoon, [name]<br><br>Insert here the text of your message. In order to have your delivery was effective, try to follow these tips:<ul><li> Think about what you want to achieve this mailing </li><li> Think about who your recipients </li><li> write so as if you are applying to one person</li></ul>')."');
+                    blockUpdateSet('9','".Yii::t('app','Good afternoon, {$contact.first_name}<br><br>Insert here the text of your message. In order to have your delivery was effective, try to follow these tips:<ul><li> Think about what you want to achieve this mailing </li><li> Think about who your recipients </li><li> write so as if you are applying to one person</li></ul>')."');
 
                     $('#sortable').append('<div class=\"row-block\"><div class=\"content-block\"></div></div>');
                     blockUpdateRow = $('#sortable').children('.row-block').filter(':last');

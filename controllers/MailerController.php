@@ -18,6 +18,21 @@ class MailerController extends AdminController
 
     public $disabledActions = ['create','update'];
 
+    public function actions()
+    {
+        return array_merge(parent::actions(), [
+            'add-mail' => [
+                'class' => 'app\components\actions\CopyMailAction',
+                'modelTo' => 'app\models\Mailer',
+            ],
+            'add-template' => [
+                'class' => 'app\components\actions\CopyMailAction',
+                'modelTo' => 'app\models\Templates',
+                'controllerTo' => 'templates',
+            ],
+        ]);
+    }
+
     public function actionCreate()
     {
         $model = new \app\models\MailCreateForm();
@@ -98,7 +113,7 @@ class MailerController extends AdminController
         $letter->status = 1;
         $letter->update(false,['status']);
 
-        return $this->redirect(Yii::$app->request->referrer);
+        return $this->redirect(['state','id'=>$letter->id]);
     }
 
     public function actionSendDemo($id)
@@ -138,5 +153,28 @@ class MailerController extends AdminController
 
         $step = '_step4';
         return $this->renderIsAjax('update', compact('step','letter'));
+    }
+
+    public function actionSendPause($id)
+    {
+        $letter = $this->findModel($id);
+        $letter->status = Mailer::STATE_PAUSE;
+        $letter->update(false,['status']);
+
+        $mailerId = Yii::$app->redis->executeCommand("GET", ['mail-send_mailerId']);
+        if ($letter->id != $mailerId) {
+            Yii::$app->redis->executeCommand("SET", ['mail-send_mailerId', null]);
+        }
+
+        return $this->redirect(['state','id'=>$letter->id]);
+    }
+
+    public function actionSendPlay($id)
+    {
+        $letter = $this->findModel($id);
+        $letter->status = Mailer::STATE_SENDING;
+        $letter->update(false,['status']);
+
+        return $this->redirect(['state','id'=>$letter->id]);
     }
 }

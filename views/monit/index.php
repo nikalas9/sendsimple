@@ -23,8 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Pre-Contact Process</h3>
                 <table class="table table-striped table-bordered detail-view">
                     <tr>
-                        <th>Process Status</th>
-                        <th>Process Start</th>
+                        <th style="width: 160px;">Process Status</th>
+                        <th style="width: 160px;">Process Start</th>
                         <th>Process Live</th>
                     </tr>
                     <tr>
@@ -56,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Mail-Send Process</h3>
                 <table class="table table-striped table-bordered detail-view">
                     <tr>
-                        <th>Process Status</th>
-                        <th>Process Start</th>
-                        <th>Process Live</th>
+                        <th style="width: 160px;">Process Status</th>
+                        <th style="width: 160px;">Process Start</th>
+                        <th style="width: 160px;">Process Live</th>
                         <th>MailerId</th>
                         <th>Stack</th>
                         <th>Counter</th>
@@ -109,6 +109,38 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                 </table>
 
+                <h3>Mail-Bounce Process</h3>
+                <table class="table table-striped table-bordered detail-view">
+                    <tr>
+                        <th style="width: 160px;">Process Status</th>
+                        <th style="width: 160px;">Process Start</th>
+                        <th>Process Live</th>
+                    </tr>
+                    <tr>
+                        <td><?php
+                            $row = Yii::$app->redis->executeCommand("GET", ['mail-bounce_status']);
+                            if ($row == false) {
+                                echo '<span class="label label-default">No Run</span>';
+                            } else if ($row == 1) {
+                                echo '<span class="label label-success">Active</span>';
+                            } else  if ($row == 2) {
+                                echo '<span class="label label-warning">Sleep</span>';
+                            }
+                            ?> </td>
+                        <td><?php
+                            $row = Yii::$app->redis->executeCommand("GET", ['mail-bounce_start']);
+                            if ($row) {
+                                echo date('Y-m-d H:i:s', $row);
+                            }
+                            ?> </td>
+                        <td><?php
+                            $row = Yii::$app->redis->executeCommand("GET", ['mail-bounce_live']);
+                            if ($row) {
+                                echo date('Y-m-d H:i:s', $row);
+                            }
+                            ?> </td>
+                    </tr>
+                </table>
 
             </div>
         </div>

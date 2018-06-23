@@ -141,4 +141,25 @@ class LittleBigHelper
 			return $ip;
 		}
 	}
+
+    /**
+     * Recursively copy a directory, including symlink support, in PHP
+     *
+     * @return null
+     */
+    public static function copy_dir($src, $dst)
+    {
+        if (is_link($src)) {
+            symlink(readlink($src), $dst);
+        } elseif (is_dir($src)) {
+            mkdir($dst, 0700);
+            foreach (scandir($src) as $file) {
+                if ($file != '.' && $file != '..') {
+                    self::copy_dir("$src/$file", "$dst/$file");
+                }
+            }
+        } elseif (is_file($src)) {
+            copy($src, $dst);
+        }
+    }
 } 

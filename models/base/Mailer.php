@@ -86,4 +86,20 @@ class Mailer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Account::className(), ['id' => 'account_id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(\app\models\User::className(), ['id' => 'updated_by']);
+    }
 }

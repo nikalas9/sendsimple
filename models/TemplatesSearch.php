@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
 /**
  * MailerSearch represents the model behind the search form about `app\models\Mailer`.
  */
-class MailerSearch extends Mailer
+class TemplatesSearch extends Templates
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class MailerSearch extends Mailer
      */
     public function search($params)
     {
-        $query = Mailer::find();
+        $query = Templates::find();
 
         //$query->with(['countStack','countSend','countDeliver','countOpen']);
 

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\helpers\Html;
 use yii\helpers\Url;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -118,14 +119,40 @@ class Account extends \app\models\base\Account
     }
 
 
-    public function optionView()
+    public function optionView($model)
     {
+
+
         $option = [
             'items' => [
                 'id',
-                'status',
+                [
+                    'attribute' => 'status',
+                    'value' => (
+                        $model->status == -1
+                            ? Html::a('Enable', ['enable', 'id' => $model->id], [
+                                'class' => 'btn btn-xs btn-success',
+                                'data' => [
+                                    'confirm' => 'Are you sure you want to enable this account?',
+                                    'method' => 'post',
+                                ],
+                            ])
+                            :  $model->status
+                    ),
+                    'format' => 'raw',
+                ],
                 'from_email',
                 'from_name',
+                'smtp_host',
+                'smtp_port',
+                'smtp_username',
+                'smtp_password',
+                'smtp_encryption',
+                'imap_host',
+                'imap_port',
+                'imap_username',
+                'imap_password',
+                'imap_encryption',
             ]
         ];
 

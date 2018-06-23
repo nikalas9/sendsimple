@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Mailer;
+use yii\helpers\Url;
 use yii\helpers\Html;
 
 $this->registerJs("
@@ -56,7 +57,25 @@ $this->registerJs("
 
                 <?php if($letter->status == Mailer::STATE_FINISH):?>
                     <p class="lead">Finish sending.</p>
+                    <script type="text/javascript">
+                        location.href = '<?= Url::to(['view','id'=>$letter->id]);?>';
+                    </script>
                 <?php endif;?>
+
+                <p class="text-center">
+                    <?php if ($letter->status == Mailer::STATE_QUEUED):?>
+                        <?= Html::a('Send Cancel',['send-cancel','id'=>$letter->id],[
+                            'class' => 'btn btn-warning btn-lg btn-send-start'
+                        ]);?>
+                    <?php elseif($letter->status == Mailer::STATE_SENDING):?>
+                        <?= Html::a('Send Pause',['send-pause','id'=>$letter->id],[
+                            'class' => 'btn btn-warning btn-lg btn-send-start'
+                        ]);?>
+                    <?php elseif($letter->status == Mailer::STATE_PAUSE):?>
+                        <?= Html::a('Send Play',['send-play','id'=>$letter->id],[
+                            'class' => 'btn btn-primary btn-lg btn-send-start'
+                        ]);?>
+                    <?php endif;?>
             </div>
             <?php \core\components\Pjax::end();?>
         </div>

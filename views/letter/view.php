@@ -1,17 +1,13 @@
 <?php
 
-use app\assets\BuilderAsset;
-
-BuilderAsset::register($this);
+use yii\web\View;
 
 $this->registerJsFile("/web/js/plugin/iframeResizer/iframeResizer.contentWindow.min.js");
 
-$this->beginPage();
-
-if($content){
-    /*$this->registerJsFile('/public/web/js/plugin/html2canvas.min.js',CClientScript::POS_END);
-    $cs->registerScript('html2canvas',"
-    html2canvas(document.body, {
+if ($content) {
+    $this->registerJsFile('/web/js/plugin/html2canvas.min.js');
+    $this->registerJs("
+     html2canvas(document.body, {
       onrendered: function(canvas) {
 
         var canvasEx = document.createElement('canvas');
@@ -26,11 +22,10 @@ if($content){
         ctx.drawImage(canvas, 0, 0, width, height);
 
         var dataURL = canvasEx.toDataURL('image/jpeg', 0.9);
-        $.post('/index.php?r=temp/preview&pk={$model->id}',{'data':dataURL});
+        $.post('" . \yii\helpers\Url::toRoute(['letter/preview','key'=>$key]) . "',{'data':dataURL});
       }
     });
-    ",CClientScript::POS_READY);*/
+    ", View::POS_READY, 'preview');
 
     echo $content;
 }
-$this->endPage();

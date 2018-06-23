@@ -29,7 +29,7 @@ var nicEditorConfig = bkClass.extend({
 		'hr' : {name : __('Horizontal Rule'), command : 'insertHorizontalRule', noActive : true},
         'upload2' : {name : __('Insert an Image'), type : 'nicEditorUploadButton', noActive : true}
 	},
-    iconsPath : '/public/web/js/plugin/nicEdit/nicEditorIcons.gif',
+    iconsPath : '/web/js/plugin/nicEdit/nicEditorIcons.gif',
 	/*buttonList : ['save','bold','italic','underline','left','center','right','justify','ol','ul','fontSize','fontFamily','fontFormat','indent','outdent','image','upload','link','unlink','forecolor','bgcolor'],*/
     buttonList : ['save','bold','italic','underline','left','center','right','justify','ol','ul','fontSize','fontFamily','fontFormat','indent','outdent','image','upload2','link','unlink','forecolor','bgcolor'],
     iconList : {"xhtml":1,"bgcolor":2,"forecolor":3,"bold":4,"center":5,"hr":6,"indent":7,"italic":8,"justify":9,"left":10,"ol":11,"outdent":12,"removeformat":13,"right":14,"save":25,"strikethrough":16,"subscript":17,"superscript":18,"ul":19,"underline":20,"image":21,"link":22,"unlink":23,"close":24,"arrow":26,"upload2":27}
@@ -131,7 +131,7 @@ var nicCodeButton=nicEditorAdvancedButton.extend({width:"350px",addPane:function
 var nicEditorUploadButton = nicEditorButton.extend({
     mouseClick : function() {
         nicEditThis = this;
-        window.open('/index.php?r=temp/elfinderBrowse&pk='+tempId,'_blank','height=460,width=900');
+        window.open(fileBrowserUrl ,'_blank','height=460,width=900');
     }
 });
 

@@ -41,6 +41,13 @@ body > .select2-hidden-accessible{
 .autocomplete-group { padding: 2px 5px; }
 .autocomplete-group strong { font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
 
+.preview{
+    display: block;
+    width: 100px;
+    height: 68px;
+    overflow: hidden;
+}
+
 /*------------------------------------------------------------------------------- form -------------------------------*/
 
 form div.required label.control-label:after {
@@ -101,4 +108,33 @@ form div.required label.control-label:after {
 }
 .ui-spinner-up::before, .ui-spinner-down::before{
     color: #555;
+}
+
+
+[data-progressbar-value]:before {
+    content: unset;
+}
+[data-progressbar-value]:after {
+    content: unset;
+}
+.progress{
+    margin-top: 0px !important;
+}
+
+.progressbar-text{
+    font-size: 11px;
+    color: #444;
+}
+
+.easy-pie-chart .percent{
+    margin-top: -20px;
+}
+
+.easy-pie-text{
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 40px;
+    margin-left: 6px;
+    text-align: left;
+    text-transform: uppercase;
 }

@@ -13,6 +13,12 @@ class Clients extends \app\models\base\Clients
 {
     public $baseIds;
 
+    const STATE_NEW = 0;
+    const STATE_ACTIVE = 1;
+    const STATE_ERROR = -1;
+    const STATE_BOUNCE = -2;
+    const STATE_UNSUBSCRIBE = -3;
+
     public function rules()
     {
         return [
@@ -118,9 +124,36 @@ class Clients extends \app\models\base\Clients
                         'attribute'=>'id',
                     ],
                     [
-                        'class' => \core\components\gridColumns\StatusColumn::className(),
                         'attribute'=>'status',
-                        'toggleUrl'=>Url::to(['toggle-attribute', 'attribute'=>'status', 'id'=>'_id_']),
+                        'value' => function($model){
+                            $status = array(
+                                0 => 'New',
+                                1 => 'Active',
+                                -1 => 'Error',
+                                -2 => 'Bounce',
+                                -3 => 'Unsubscribe',
+                            );
+                            $label = 'default';
+                            switch($model->status) {
+                                case '0':  $label = 'default'; break;
+                                case '1':  $label = 'success'; break;
+                                case '-1':  $label = 'error'; break;
+                                case '-2':  $label = 'warning'; break;
+                                case '-3':  $label = 'warning'; break;
+                            }
+                            return '<span style="font-size:85%;" class="label label-'.$label.'">'.$status[$model->status].'</span>';
+                        },
+                        'filter' => [
+                            0 => 'New',
+                            1 => 'Active',
+                            -1 => 'Error',
+                            -2 => 'Bounce',
+                            -3 => 'Unsubscribe',
+                        ],
+                        'format' => 'html',
+                        'contentOptions' => [
+                            'style'=>'text-align:center; width:80px; white-space:nowrap;'
+                        ],
                     ],
                     [
                         'class' => \core\components\gridColumns\DateRangeColumn::className(),

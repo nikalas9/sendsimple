@@ -135,7 +135,11 @@ class StatusColumn extends \yii\grid\DataColumn
 					$data .= "data-url='{$toggleUrl}'";
 				}
 
-				return "<span style='{$style}' {$data} class='{$class}'> {$value} </span>";
+				if ($attributeValue == -1) {
+                    return "<span class='{$class}'> {$value} </span>";
+                } else {
+                    return "<span style='{$style}' {$data} class='{$class}'> {$value} </span>";
+                }
 			}
 			else
 			{
@@ -181,6 +185,7 @@ class StatusColumn extends \yii\grid\DataColumn
 			$this->optionsArray = [
 				[0, Yii::t('yii', 'No'), 'warning'],
 				[1, Yii::t('yii', 'Yes'), 'success'],
+                [-1, Yii::t('yii', 'Error'), 'danger'],
 			];
 		}
 	}

@@ -19,6 +19,8 @@ class Mailer extends \app\models\base\Mailer
     const STATE_PAUSE = 5;
     const STATE_ERROR = -1;
 
+    public $value;
+
     /**
      * @inheritdoc
      */
@@ -26,7 +28,7 @@ class Mailer extends \app\models\base\Mailer
     {
         return [
             [['group_id', 'account_id'], 'integer'],
-            [['body', 'temp_id', 'files'], 'string'],
+            [['body', 'temp_id', 'files', 'mode_id'], 'string'],
             [['name'], 'string', 'max' => 255],
             [['base_ids'], 'safe'],
         ];
@@ -47,8 +49,7 @@ class Mailer extends \app\models\base\Mailer
     {
         return $this->hasOne(MailerData::className(), [
             'mailer_id' => 'id',
-        ])
-            ->select('mailer_id, count(*) as value');
+        ])->count();
     }
 
     /**
@@ -58,9 +59,7 @@ class Mailer extends \app\models\base\Mailer
     {
         return $this->hasOne(MailerData::className(), [
             'mailer_id' => 'id',
-        ])
-            ->andWhere('send is not null')
-            ->select('mailer_id, count(*) as value');
+        ])->andWhere('send is not null')->count();
     }
 
     /**
@@ -70,9 +69,7 @@ class Mailer extends \app\models\base\Mailer
     {
         return $this->hasOne(MailerData::className(), [
             'mailer_id' => 'id',
-        ])
-            ->andWhere('deliver is not null')
-            ->select('mailer_id, count(*) as value');
+        ])->andWhere('error is null')->count();
     }
 
     /**
@@ -82,19 +79,38 @@ class Mailer extends \app\models\base\Mailer
     {
         return $this->hasOne(MailerData::className(), [
             'mailer_id' => 'id',
-        ])
-            ->andWhere('open is not null')
-            ->select('id, count(*) as value');
+        ])->andWhere('open is not null')->count();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountSpam()
+    {
+        return $this->hasOne(MailerData::className(), [
+            'mailer_id' => 'id',
+        ])->andWhere('spam is not null')->count();
     }
 
 
-    /*public function behaviors()
+    public function behaviors()
     {
         return [
             TimestampBehavior::className(),
             BlameableBehavior::className(),
         ];
-    }*/
+    }
+
+    public static function find()
+    {
+        return new BaseQuery(get_called_class());
+    }
+
+    public function delete()
+    {
+        $this->del = 1;
+        $this->update(false, ['del']);
+    }
 
     // admin option ----------------------------------------------------------------------------------------------------
 
@@ -140,6 +156,15 @@ class Mailer extends \app\models\base\Mailer
                         }
                         return '<span style="font-size:85%;" class="label label-'.$label.'">'.$status[$model->status].'</span>';
                     },
+                    'filter' => [
+                        0 => 'Draft',
+                        1 => 'Queued',
+                        2 => 'Distribution',
+                        3 => 'Finish',
+                        4 => 'Cancel',
+                        5 => 'Pause',
+                        -1 => 'Error',
+                    ],
                     'format' => 'html',
                     'contentOptions' => [
                         'style'=>'text-align:center; width:80px; white-space:nowrap;'
@@ -148,23 +173,34 @@ class Mailer extends \app\models\base\Mailer
                 [
                     'class' => \core\components\gridColumns\DateRangeColumn::className(),
                     'attribute'=>'created_at',
-                    'value'=> function($model){
-                        return date("d/m/Y H:i",$model->created_at);
-                    },
+                    'format'=>'datetime',
                 ],
                 [
                     'attribute' => 'name',
                     'value' => function ($data) {
                         if ($data->status == Mailer::STATE_DRAFT) {
                             return Html::a($data->name, ['update', 'id' => $data->id], ['data-pjax'=>0], true);
-                        } elseif ($data->status == Mailer::STATE_FINISH) {
-                            return Html::a($data->name, ['view', 'id' => $data->id], ['data-pjax'=>0], true);
-                        } else {
+                        } elseif (in_array($data->status, [Mailer::STATE_QUEUED, Mailer::STATE_SENDING])) {
                             return Html::a($data->name, ['state', 'id' => $data->id], ['data-pjax'=>0], true);
+                        } else {
+                            return Html::a($data->name, ['view', 'id' => $data->id], ['data-pjax'=>0], true);
                         }
-
                     },
                     'format' => 'raw',
+                ],
+                [
+                    'label' => 'Preview',
+                    'format' => 'html',
+                    'value' => function ($data) {
+                        $preview = '/public/template/' . $data->temp_id . '/preview.jpg';
+                        if (file_exists('./' . $preview)) {
+                            return Html::a(Html::img($preview, ['width'=>100]),$preview, ['class'=>'preview']);
+                        }
+                        return '';
+                    },
+                    'headerOptions' => [
+                        'style'=>'width:100px;'
+                    ],
                 ],
                 [
                     'class' => \core\components\gridColumns\Select2Column::className(),
@@ -272,11 +308,34 @@ class Mailer extends \app\models\base\Mailer
     }
 
 
-    public function optionView()
+    public function optionView($model)
     {
         $option = [
             'items' => [
+                'id',
+                'status',
                 'name',
+                [
+                    'attribute' => 'group_id',
+                    'value' => $model->group->name,
+                ],
+                [
+                    'attribute' => 'body',
+                    'value' => '<iframe width="100%" frameborder="0" vspace="0" hspace="0" scrolling="no" src="'
+                        . Url::toRoute(['letter/view','key'=>$model->temp_id])
+                        . '" id="templateViewer"></iframe>',
+                    'format' => 'raw'
+                ],
+                'created_at:datetime',
+                'updated_at:datetime',
+                [
+                    'label'=>'Created By',
+                    'attribute'=>'createdBy.username',
+                ],
+                [
+                    'label'=>'Updated By',
+                    'attribute'=>'updatedBy.username',
+                ]
             ]
         ];
 

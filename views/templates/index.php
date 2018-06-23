@@ -83,7 +83,7 @@ $option = $searchModel->optionIndex($searchModel);
 <?php
 yii\bootstrap\Modal::begin([
     'headerOptions' => ['id' => 'modalMdSimpleHeader'],
-    'header' => '<span id="modalMdSimpleHeaderTitle"><h4>Mail Create</h4></span>',
+    'header' => '<span id="modalMdSimpleHeaderTitle"><h4>Template Create</h4></span>',
     'id' => 'modalMdSimple',
     //'ajaxSubmit' => true,
     'size' => 'modal-md',
@@ -97,7 +97,7 @@ yii\bootstrap\Modal::begin([
             <?= Html::a('Mail Builder',
                 [
                     'create',
-                    'MailCreateForm[mode_id]' => 'builder'
+                    'Templates[mode_id]' => 'builder'
                 ], [
                     'class'=>'btn btn-default btn-lg'
                 ]);?>

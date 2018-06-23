@@ -17,21 +17,10 @@ class Builder extends BaseWidget{
         }
         Yii::$app->session[$model->temp_id] = $model->$attribute;
 
-        return $this->render('builder',compact('form','model','attribute'));
-
-
-        /*if($temp->type == 1){
-            $this->render('builder',array(
-                'model'=>$temp,
-                'modelName'=>Yii::app()->controller->modelName,
-            ));
+        if ($model->mode_id == 'builder') {
+            return $this->render('builder',compact('form','model','attribute'));
+        } else {
+            return $this->render('nicEdit',compact('form','model','attribute'));
         }
-        if($temp->type == 2){
-            $this->render('template',array(
-                'model'=>$temp,
-                'modelName'=>Yii::app()->controller->modelName,
-            ));
-        }*/
-
 	}
 }
