@@ -119,13 +119,13 @@ class Base extends \app\models\base\Base
                     },
                     'format'=>'raw',
                 ],
-                [
+                /*[
                     'attribute'=>'lang_id',
                     'filter'=> ArrayHelper::map(Lang::find()->all(),'id','name'),
                     'value'=> function($model){
                         return $model->lang ? $model->lang->name : '';
                     },
-                ],
+                ],*/
                 [
                     'class' => 'yii\grid\CheckboxColumn',
                     'options'=>['style'=>'width:10px']
@@ -142,9 +142,9 @@ class Base extends \app\models\base\Base
 
     public function optionUpdate($model)
     {
-        if($model->isNewRecord){
+        /*if($model->isNewRecord){
             $model->lang_id = Lang::getMainLangId();
-        }
+        }*/
 
         $option = [
             'items' => [
@@ -156,10 +156,10 @@ class Base extends \app\models\base\Base
                     ]
                 ],
                 'name' => 'Text',
-                'lang_id' => [
+                /*'lang_id' => [
                     'type'=>'Select',
                     'data'=> Lang::getDropDownList(),
-                ],
+                ],*/
             ]
         ];
 

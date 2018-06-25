@@ -24,7 +24,7 @@
 
 ### Demo доступ к Lite версии: 
  
- Адрес для входа: http://sender.sendsimple.net/
+ Адрес для входа: http://demo.sendsimple.net/
 
  логин: neo
  
@@ -70,10 +70,23 @@ php yii migrate
 ```bash
 php yii pre-contact
 php yii mail-send
-```
-В крон добавить выполнение след процессов:
-```bash
 php yii mail-bounce
+```
+Работу процессов в фоне можно настроить через сервис мониторинга Monit
+
+/etc/monit/conf-available/sender
+```bash
+check process yii_mail_send matching "yii mail-send"
+   stop program  = "/usr/bin/pkill -f 'mail-send'"
+   if does not exist then exec /bin/su - username -c "/usr/bin/php /home/username/web/demo.sendsimple.net/public_html/sendsimple/yii mail-send"
+
+check process yii_pre_contact matching "yii pre-contact"
+   stop program  = "/usr/bin/pkill -f 'pre-contact'"
+   if does not exist then exec /bin/su - username -c "/usr/bin/php /home/username/web/demo.sendsimple.net/public_html/sendsimple/yii pre-contact"
+
+check process yii_mail_bounce matching "yii mail-bounce"
+   stop program  = "/usr/bin/pkill -f 'mail-bounce'"
+   if does not exist then exec /bin/su - username -c "/usr/bin/php /home/username/web/demo.sendsimple.net/public_html/sendsimple/yii mail-bounce"
 ```
 
 

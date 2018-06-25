@@ -49,22 +49,17 @@ class ManagerMenuWidget extends Widget
             'link' => Url::to(['/templates/index']),
             'icon' => 'fa-cloud',
         ];
-        $list[] = [
-            'title' => 'Account',
-            'link' => Url::to(['/account/index']),
-            'icon' => 'fa-cloud',
-        ];
-        $list[] = [
-            'title' => 'Lang',
-            'link' => Url::to(['/lang/index']),
-            'icon' => 'fa-cloud',
-        ];
-        $list[] = [
-            'title' => 'Custom Fields ',
-            'link' => Url::to(['/clients-param/index']),
-            'icon' => 'fa-cloud',
-        ];
         if(Yii::$app->user->can('admin')){
+            $list[] = [
+                'title' => 'Custom Fields ',
+                'link' => Url::to(['/clients-param/index']),
+                'icon' => 'fa-cloud',
+            ];
+            $list[] = [
+                'title' => 'Account',
+                'link' => Url::to(['/account/index']),
+                'icon' => 'fa-cloud',
+            ];
             $list[] = [
                 'title' => 'Users',
                 'link' => Url::to(['/user/admin']),
