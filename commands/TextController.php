@@ -8,6 +8,7 @@
 namespace app\commands;
 
 use app\models\Mailer;
+use app\models\MailerData;
 use yii\console\Controller;
 use Yii;
 
@@ -34,31 +35,13 @@ class TextController extends Controller
             ->orderBy('id asc')
             ->one();
 
-        $account = $mailer->account;
-
-        $eMailer = Yii::$app->mailer;
-        $transport = [
-            'class' => 'Swift_SmtpTransport',
-            'host' => $account['smtp_host'],
-            'username' => $account['smtp_username'],
-            'password' => $account['smtp_password'],
-            'port' => $account['smtp_port'],
-            'encryption' => $account['smtp_encryption'],
-        ];
-        $eMailer->setTransport($transport);
-
-        $message = $eMailer->compose();
-
-
-        $content = 'test';
-
-        $result = $message
-            ->setTo('nikalas9@ya.ru')
-            ->setFrom([$account['from_email'] => $account['from_name']])
-            ->setSubject($mailer->name)
-            ->setHtmlBody($content)
-            ->send();
-
-        return $result;
+        $row = MailerData::find()
+            ->where([
+                'status' => 0,
+                'mailer_id' => $mailer->id,
+            ])
+            ->one();
+        $row->senderMail($mailer);
+        return 0;
     }
 }
