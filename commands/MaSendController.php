@@ -33,35 +33,40 @@ class MaSendController extends Controller
                 ->one();
             if($mailer){
                 try {
-                    $list = MailerData::find()
-                        ->where([
-                            //'status' => 0,
-                            //'mailer_id' => $mailer->id,
-                            'id' => 19,
-                        ])
-                        ->all();
-                    if($list) {
-                        Yii::$app->redis->executeCommand("SET", ['mail-send_status', 3]);
-                        Yii::$app->redis->executeCommand("SET", ['mail-send_mailerId', $mailer->id]);
-                        Yii::$app->redis->executeCommand("SET", ['mail-send_stack', count($list)]);
-                        Yii::$app->redis->executeCommand("SET", ['mail-send_counter', 0]);
-                        foreach ($list as $row) {
-                            $mailerId = Yii::$app->redis->executeCommand("GET", ['mail-send_mailerId']);
-                            if ($mailer->id != $mailerId) {
-                               break; //pause
-                            }
+                    while (1) {
+                        $list = MailerData::find()
+                            ->where([
+                                //'status' => 0,
+                                //'mailer_id' => $mailer->id,
+                                'id' => 19,
+                            ])
+                            ->all();
+                        if($list) {
+                            Yii::$app->redis->executeCommand("SET", ['mail-send_status', 3]);
+                            Yii::$app->redis->executeCommand("SET", ['mail-send_mailerId', $mailer->id]);
+                            Yii::$app->redis->executeCommand("SET", ['mail-send_stack', count($list)]);
+                            Yii::$app->redis->executeCommand("SET", ['mail-send_counter', 0]);
+                            foreach ($list as $row) {
+                                $mailerId = Yii::$app->redis->executeCommand("GET", ['mail-send_mailerId']);
+                                if ($mailer->id != $mailerId) {
+                                    break; //pause
+                                }
 
-                            $row->senderMail($mailer);
-                            Yii::$app->redis->executeCommand("INCR", ['mail-send_counter']);
+                                $row->senderMail($mailer);
+                                Yii::$app->redis->executeCommand("INCR", ['mail-send_counter']);
 
-                            if(Yii::$app->params['timeMailSendSleep']) {
-                                echo "sleep_start\n";
-                                sleep(Yii::$app->params['timeMailSendSleep']);
-                                echo "sleep_end\n";
+                                if(Yii::$app->params['timeMailSendSleep']) {
+                                    echo "sleep_start\n";
+                                    sleep(Yii::$app->params['timeMailSendSleep']);
+                                    echo "sleep_end\n";
+                                }
+                                //Yii::$app->end();
                             }
-                            //Yii::$app->end();
                         }
                     }
+
+
+
                     $mailer->status = Mailer::STATE_FINISH;
                     $mailer->save(false);
                 } catch (\Exception $e) {
