@@ -37,8 +37,8 @@ class TextController extends Controller
 
         $row = MailerData::find()
             ->where([
-                'status' => 0,
-                'mailer_id' => $mailer->id,
+                'id' => 19,
+                //'mailer_id' => $mailer->id,
             ])
             ->one();
         try {
