@@ -41,7 +41,12 @@ class TextController extends Controller
                 'mailer_id' => $mailer->id,
             ])
             ->one();
-        $row->senderMail($mailer);
+        try {
+            $row->senderMail($mailer);
+        }
+        catch (\Exception $e) {
+            return $e->getMessage();
+        }
         return 0;
     }
 }
