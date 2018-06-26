@@ -54,10 +54,10 @@ class MaSendController extends Controller
                             $row->senderMail($mailer);
                             Yii::$app->redis->executeCommand("INCR", ['mail-send_counter']);
 
-                            /*if(Yii::$app->params['timeMailSendSleep']) {
+                            if(Yii::$app->params['timeMailSendSleep']) {
                                 sleep(Yii::$app->params['timeMailSendSleep']);
-                            }*/
-                            Yii::$app->end();
+                            }
+                            //Yii::$app->end();
                         }
                     }
                     $mailer->status = Mailer::STATE_FINISH;
