@@ -46,12 +46,11 @@ class MailBounceController extends Controller
                     $cwsMbh->setMailboxUsername($account['imap_username']);
                     $cwsMbh->setMailboxPassword($account['imap_password']);
                     $encryption = $account['imap_encryption'];
-                    if($encryption == ''){
-                        $encryption = 'none';
-                    }
-                    $cwsMbh->setMailboxSecurity($encryption);
-                    if(in_array($encryption,['tls','ssl'])){
-                        $cwsMbh->setMailboxCertValidate(); // default const MAILBOX_CERT_NOVALIDATE
+                    if (in_array($encryption, ['tls','ssl'])) {
+                        $cwsMbh->setMailboxSecurity($encryption);
+                        $cwsMbh->setMailboxCertValidate();
+                    } else {
+                        $cwsMbh->setMailboxCertNoValidate();
                     }
 
                     //$cwsMbh->setMailboxName('SPAM'); // default 'INBOX'
