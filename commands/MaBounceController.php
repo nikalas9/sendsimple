@@ -9,7 +9,7 @@ use yii\console\Controller;
 use yii\console\Exception;
 use Yii;
 
-class MailBounceController extends Controller
+class MaBounceController extends Controller
 {
     public function actionIndex()
     {
